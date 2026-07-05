@@ -1,0 +1,666 @@
+TestCmdAtkAke: TEST_ATK_ILV_MAKE_SIG_DH_M4; prot MAKE_SIG_DH_M4_ILV; adv ATK_ILV_MAKE_SIG_DH_M4
+>> Start key exchange: Interleaving attack on MAKE_SIG_DH_M4_ILV
+[Party: ana] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from ana to bob state START
+[KeyEx: ana] build InitMsg to bob, new state INIT_SENT
+[Comm] MsgHeader: { INIT_A from ana to bob sid D1164C0627F034E0 }
+INIT_A: 
+ nonce[32]:
+  71 6D E9 AC ED D8 41 5E DE 8B 50 7E 81 11 38 F7   qm....A^..P~..8.
+  1B B7 4F 8C D9 E2 BC B6 B5 4D C5 2B 06 2C 6C DE   ..O......M.+.,l.
+ dhPubKey[812]:
+  30 82 03 28 30 82 01 9B 06 09 2A 86 48 86 F7 0D   0..(0.....*.H...
+  01 03 01 30 82 01 8C 02 82 01 81 00 FF FF FF FF   ...0............
+  FF FF FF FF AD F8 54 58 A2 BB 4A 9A AF DC 56 20   ......TX..J...V 
+  27 3D 3C F1 D8 B9 C5 83 CE 2D 36 95 A9 E1 36 41   '=<......-6...6A
+  14 64 33 FB CC 93 9D CE 24 9B 3E F9 7D 2F E3 63   .d3.....$.>.}/.c
+  63 0C 75 D8 F6 81 B2 02 AE C4 61 7A D3 DF 1E D5   c.u.......az....
+  D5 FD 65 61 24 33 F5 1F 5F 06 6E D0 85 63 65 55   ..ea$3.._.n..ceU
+  3D ED 1A F3 B5 57 13 5E 7F 57 C9 35 98 4F 0C 70   =....W.^.W.5.O.p
+  E0 E6 8B 77 E2 A6 89 DA F3 EF E8 72 1D F1 58 A1   ...w.......r..X.
+  36 AD E7 35 30 AC CA 4F 48 3A 79 7A BC 0A B1 82   6..50..OH:yz....
+  B3 24 FB 61 D1 08 A9 4B B2 C8 E3 FB B9 6A DA B7   .$.a...K.....j..
+  60 D7 F4 68 1D 4F 42 A3 DE 39 4D F4 AE 56 ED E7   `..h.OB..9M..V..
+  63 72 BB 19 0B 07 A7 C8 EE 0A 6D 70 9E 02 FC E1   cr........mp....
+  CD F7 E2 EC C0 34 04 CD 28 34 2F 61 91 72 FE 9C   .....4..(4/a.r..
+  E9 85 83 FF 8E 4F 12 32 EE F2 81 83 C3 FE 3B 1B   .....O.2......;.
+  4C 6F AD 73 3B B5 FC BC 2E C2 20 05 C5 8E F1 83   Lo.s;..... .....
+  7D 16 83 B2 C6 F3 4A 26 C1 B2 EF FA 88 6B 42 38   }.....J&.....kB8
+  61 1F CF DC DE 35 5B 3B 65 19 03 5B BC 34 F4 DE   a....5[;e..[.4..
+  F9 9C 02 38 61 B4 6F C9 D6 E6 C9 07 7A D9 1D 26   ...8a.o.....z..&
+  91 F7 F7 EE 59 8C B0 FA C1 86 D9 1C AE FE 13 09   ....Y...........
+  85 13 92 70 B4 13 0C 93 BC 43 79 44 F4 FD 44 52   ...p.....CyD..DR
+  E2 D7 4D D3 64 F2 E2 1E 71 F5 4B FF 5C AE 82 AB   ..M.d...q.K.\...
+  9C 9D F6 9E E8 6D 2B C5 22 36 3A 0D AB C5 21 97   .....m+."6:...!.
+  9B 0D EA DA 1D BF 9A 42 D5 C4 48 4E 0A BC D0 6B   .......B..HN...k
+  FA 53 DD EF 3C 1B 20 EE 3F D5 9D 7C 25 E4 1D 2B   .S..<. .?..|%..+
+  66 C6 2E 37 FF FF FF FF FF FF FF FF 02 01 02 02   f..7............
+  02 01 13 03 82 01 85 00 02 82 01 80 40 44 AB 77   ............@D.w
+  F4 9B 8B E9 6B 5D 89 41 BF 3D D6 1D B0 0C F5 EC   ....k].A.=......
+  47 A7 9E F0 16 CD E8 CA 5C 2A 3E 20 C6 F1 06 89   G.......\*> ....
+  52 36 C3 51 6F 75 67 3E 4D 18 6C B0 85 96 AE 0A   R6.Qoug>M.l.....
+  0C 8F 6E FA D4 5A F5 5B 41 8F 24 48 BE 02 04 56   ..n..Z.[A.$H...V
+  F5 29 F9 31 55 BE C8 FC 1C ED F6 91 50 F3 96 7E   .).1U.......P..~
+  C7 A2 D2 89 9F 1E AD 68 9D AA 30 21 A6 DB 02 36   .......h..0!...6
+  D5 B3 2A FC 65 B3 07 33 29 01 B1 03 ED 81 5D 5B   ..*.e..3).....][
+  54 1F 85 2A 4F BB 93 CC 0F D5 26 7A 0C A1 9E E1   T..*O.....&z....
+  86 75 74 D0 24 84 11 D0 30 4A 19 63 A8 8C 90 EE   .ut.$...0J.c....
+  FB C3 93 B8 66 31 3C 0B 20 1C 9A 03 DD 07 7D 31   ....f1<. .....}1
+  20 AD 46 04 B2 61 71 54 1A 92 A4 B5 68 74 4F 72    .F..aqT....htOr
+  59 B6 B1 C2 7A 21 E5 15 13 2D C9 97 91 A3 B6 9B   Y...z!...-......
+  EB BE 9A 20 9C 02 FD A8 9A 71 89 63 4A 49 BB 84   ... .....q.cJI..
+  49 0F 32 26 7D B9 2F 1A 9F 3A 06 E4 05 78 76 64   I.2&}./..:...xvd
+  7E 50 86 52 13 FA 06 28 A2 90 62 0E 4F 65 85 FD   ~P.R...(..b.Oe..
+  3E E7 A1 90 98 D1 35 09 24 2D 5C E2 45 A0 B0 8A   >.....5.$-\.E...
+  5B 52 96 A5 12 8B F3 C2 76 BC 06 26 72 A7 C6 04   [R......v..&r...
+  57 AA 8F 2E DC 16 CA F4 3A 78 2A 20 77 CA 3D 11   W.......:x* w.=.
+  31 15 20 CF AE 01 A6 0E B3 34 58 4C 19 8D 2B 35   1. ......4XL..+5
+  9D 12 65 39 92 7E 49 53 4E 4A EC BB D4 A5 54 DE   ..e9.~ISNJ....T.
+  D4 43 EB 18 2A 37 F4 D3 03 6C 53 F8 CF 2C 99 64   .C..*7...lS..,.d
+  99 21 33 8B 57 D6 7C A0 20 DF 09 C2 25 23 FF 7E   .!3.W.|. ...%#.~
+  08 38 78 A5 30 46 AE 6A A5 69 2B 5F 79 23 73 D8   .8x.0F.j.i+_y#s.
+  FA 7E 1B DA 56 41 B5 79 94 45 E9 1F               .~..VA.y.E..
+
+[Party: adv] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from adv to ana state START
+[AdvKeyEx: adv] recv InitMsg in state START from ana to bob
+[AdvKeyEx: adv] send forged InitAB to bob, new state INIT_SENT
+[Comm] MsgHeader: { INIT_A from ana to bob sid D1164C0627F034E0 }
+INIT_A: 
+ nonce[32]:
+  71 6D E9 AC ED D8 41 5E DE 8B 50 7E 81 11 38 F7   qm....A^..P~..8.
+  1B B7 4F 8C D9 E2 BC B6 B5 4D C5 2B 06 2C 6C DE   ..O......M.+.,l.
+ dhPubKey[813]:
+  30 82 03 29 30 82 01 9B 06 09 2A 86 48 86 F7 0D   0..)0.....*.H...
+  01 03 01 30 82 01 8C 02 82 01 81 00 FF FF FF FF   ...0............
+  FF FF FF FF AD F8 54 58 A2 BB 4A 9A AF DC 56 20   ......TX..J...V 
+  27 3D 3C F1 D8 B9 C5 83 CE 2D 36 95 A9 E1 36 41   '=<......-6...6A
+  14 64 33 FB CC 93 9D CE 24 9B 3E F9 7D 2F E3 63   .d3.....$.>.}/.c
+  63 0C 75 D8 F6 81 B2 02 AE C4 61 7A D3 DF 1E D5   c.u.......az....
+  D5 FD 65 61 24 33 F5 1F 5F 06 6E D0 85 63 65 55   ..ea$3.._.n..ceU
+  3D ED 1A F3 B5 57 13 5E 7F 57 C9 35 98 4F 0C 70   =....W.^.W.5.O.p
+  E0 E6 8B 77 E2 A6 89 DA F3 EF E8 72 1D F1 58 A1   ...w.......r..X.
+  36 AD E7 35 30 AC CA 4F 48 3A 79 7A BC 0A B1 82   6..50..OH:yz....
+  B3 24 FB 61 D1 08 A9 4B B2 C8 E3 FB B9 6A DA B7   .$.a...K.....j..
+  60 D7 F4 68 1D 4F 42 A3 DE 39 4D F4 AE 56 ED E7   `..h.OB..9M..V..
+  63 72 BB 19 0B 07 A7 C8 EE 0A 6D 70 9E 02 FC E1   cr........mp....
+  CD F7 E2 EC C0 34 04 CD 28 34 2F 61 91 72 FE 9C   .....4..(4/a.r..
+  E9 85 83 FF 8E 4F 12 32 EE F2 81 83 C3 FE 3B 1B   .....O.2......;.
+  4C 6F AD 73 3B B5 FC BC 2E C2 20 05 C5 8E F1 83   Lo.s;..... .....
+  7D 16 83 B2 C6 F3 4A 26 C1 B2 EF FA 88 6B 42 38   }.....J&.....kB8
+  61 1F CF DC DE 35 5B 3B 65 19 03 5B BC 34 F4 DE   a....5[;e..[.4..
+  F9 9C 02 38 61 B4 6F C9 D6 E6 C9 07 7A D9 1D 26   ...8a.o.....z..&
+  91 F7 F7 EE 59 8C B0 FA C1 86 D9 1C AE FE 13 09   ....Y...........
+  85 13 92 70 B4 13 0C 93 BC 43 79 44 F4 FD 44 52   ...p.....CyD..DR
+  E2 D7 4D D3 64 F2 E2 1E 71 F5 4B FF 5C AE 82 AB   ..M.d...q.K.\...
+  9C 9D F6 9E E8 6D 2B C5 22 36 3A 0D AB C5 21 97   .....m+."6:...!.
+  9B 0D EA DA 1D BF 9A 42 D5 C4 48 4E 0A BC D0 6B   .......B..HN...k
+  FA 53 DD EF 3C 1B 20 EE 3F D5 9D 7C 25 E4 1D 2B   .S..<. .?..|%..+
+  66 C6 2E 37 FF FF FF FF FF FF FF FF 02 01 02 02   f..7............
+  02 01 13 03 82 01 86 00 02 82 01 81 00 8A 75 5F   ..............u_
+  69 46 9C EB 06 6A E8 27 C4 F9 4D C5 49 DB 6D EE   iF...j.'..M.I.m.
+  47 D4 C6 6B CC 23 F0 41 14 24 CE 6C 85 D0 AC 55   G..k.#.A.$.l...U
+  CE B0 22 CA 55 2E 18 03 4D 32 40 8E 67 D3 F7 31   ..".U...M2@.g..1
+  9D 31 60 08 BC FB 8A 4E F2 84 C4 80 5C 3B A8 4A   .1`....N....\;.J
+  17 75 C7 87 CB EA F6 A6 A3 99 09 25 91 7B E9 C5   .u.........%.{..
+  1D 9D 66 2F FB DB 63 FC B7 E2 B3 A6 D6 F9 DD 6F   ..f/..c........o
+  00 90 AA 6F A1 00 F0 F2 76 C5 4E 37 DE 5D 30 A8   ...o....v.N7.]0.
+  18 46 7B 6B 42 65 DD 29 EC EF D7 1C 0E 69 66 F1   .F{kBe.).....if.
+  F6 46 3F 38 B0 25 E1 46 10 EB 4F A4 CB BB EB CD   .F?8.%.F..O.....
+  4E 48 F9 21 02 D0 A1 39 BA 0F 9C 5E 36 2E 65 DE   NH.!...9...^6.e.
+  5B 95 A7 D0 8D 29 99 CF 1D 9F 46 D3 89 41 EA 77   [....)....F..A.w
+  C5 5A 4B 73 F1 4D C8 17 D9 B4 92 BB F3 B4 16 7B   .ZKs.M.........{
+  D0 01 10 39 82 43 79 5D 72 25 2B 79 E8 B2 2A 69   ...9.Cy]r%+y..*i
+  A0 57 11 0E D9 73 AE 38 7A 2B 6B EB FF FF E8 05   .W...s.8z+k.....
+  79 9B 6F 3B B6 61 1B 6C 2F 2F C5 41 E8 42 E8 E3   y.o;.a.l//.A.B..
+  99 BF A5 66 FE EF 60 03 4C D6 80 8F 04 82 DA 73   ...f..`.L......s
+  D7 97 2A E5 D1 68 DF A6 98 90 9B 52 40 16 C8 D9   ..*..h.....R@...
+  0D FC 47 CB 7C 50 2E 56 56 BB A8 3D 97 1C 19 FF   ..G.|P.VV..=....
+  46 F4 1E 01 D0 05 BB A9 BD 43 47 49 57 5B F8 51   F........CGIW[.Q
+  79 EB 44 F5 9A B4 88 24 87 DE 3B 04 96 CA 4A CD   y.D....$..;...J.
+  D4 4F 27 EF FC 61 09 C6 4D 97 FB AD 0D C0 62 10   .O'..a..M.....b.
+  37 6D 42 98 78 A6 B8 12 24 9F 5E 46 35 75 05 5A   7mB.x...$.^F5u.Z
+  BE 64 36 85 F5 4D D6 6B C8 51 D6 A1 35 A9 42 7E   .d6..M.k.Q..5.B~
+  6C DB 31 42 29 48 43 F8 A4 F6 B8 8B EE            l.1B)HC......
+
+[Party: bob] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from bob to ana state START
+[KeyEx: bob] recv InitMsg in state START
+[KeyEx: bob] build InitMsg to ana, new state INIT_RCVD
+[Comm] MsgHeader: { INIT_B from bob to ana sid D1164C0627F034E0 }
+INIT_B: 
+ nonce[32]:
+  2D 86 AA 67 F5 85 6C D7 0A 6C E8 AC 1D 46 38 B0   -..g..l..l...F8.
+  B5 64 9C 96 06 BB 9E E9 50 1D 35 5D C1 AD 8B 3C   .d......P.5]...<
+ dhPubKey[812]:
+  30 82 03 28 30 82 01 9B 06 09 2A 86 48 86 F7 0D   0..(0.....*.H...
+  01 03 01 30 82 01 8C 02 82 01 81 00 FF FF FF FF   ...0............
+  FF FF FF FF AD F8 54 58 A2 BB 4A 9A AF DC 56 20   ......TX..J...V 
+  27 3D 3C F1 D8 B9 C5 83 CE 2D 36 95 A9 E1 36 41   '=<......-6...6A
+  14 64 33 FB CC 93 9D CE 24 9B 3E F9 7D 2F E3 63   .d3.....$.>.}/.c
+  63 0C 75 D8 F6 81 B2 02 AE C4 61 7A D3 DF 1E D5   c.u.......az....
+  D5 FD 65 61 24 33 F5 1F 5F 06 6E D0 85 63 65 55   ..ea$3.._.n..ceU
+  3D ED 1A F3 B5 57 13 5E 7F 57 C9 35 98 4F 0C 70   =....W.^.W.5.O.p
+  E0 E6 8B 77 E2 A6 89 DA F3 EF E8 72 1D F1 58 A1   ...w.......r..X.
+  36 AD E7 35 30 AC CA 4F 48 3A 79 7A BC 0A B1 82   6..50..OH:yz....
+  B3 24 FB 61 D1 08 A9 4B B2 C8 E3 FB B9 6A DA B7   .$.a...K.....j..
+  60 D7 F4 68 1D 4F 42 A3 DE 39 4D F4 AE 56 ED E7   `..h.OB..9M..V..
+  63 72 BB 19 0B 07 A7 C8 EE 0A 6D 70 9E 02 FC E1   cr........mp....
+  CD F7 E2 EC C0 34 04 CD 28 34 2F 61 91 72 FE 9C   .....4..(4/a.r..
+  E9 85 83 FF 8E 4F 12 32 EE F2 81 83 C3 FE 3B 1B   .....O.2......;.
+  4C 6F AD 73 3B B5 FC BC 2E C2 20 05 C5 8E F1 83   Lo.s;..... .....
+  7D 16 83 B2 C6 F3 4A 26 C1 B2 EF FA 88 6B 42 38   }.....J&.....kB8
+  61 1F CF DC DE 35 5B 3B 65 19 03 5B BC 34 F4 DE   a....5[;e..[.4..
+  F9 9C 02 38 61 B4 6F C9 D6 E6 C9 07 7A D9 1D 26   ...8a.o.....z..&
+  91 F7 F7 EE 59 8C B0 FA C1 86 D9 1C AE FE 13 09   ....Y...........
+  85 13 92 70 B4 13 0C 93 BC 43 79 44 F4 FD 44 52   ...p.....CyD..DR
+  E2 D7 4D D3 64 F2 E2 1E 71 F5 4B FF 5C AE 82 AB   ..M.d...q.K.\...
+  9C 9D F6 9E E8 6D 2B C5 22 36 3A 0D AB C5 21 97   .....m+."6:...!.
+  9B 0D EA DA 1D BF 9A 42 D5 C4 48 4E 0A BC D0 6B   .......B..HN...k
+  FA 53 DD EF 3C 1B 20 EE 3F D5 9D 7C 25 E4 1D 2B   .S..<. .?..|%..+
+  66 C6 2E 37 FF FF FF FF FF FF FF FF 02 01 02 02   f..7............
+  02 01 13 03 82 01 85 00 02 82 01 80 36 EA 7B 2A   ............6.{*
+  85 C2 9E 16 0D D3 91 25 73 39 F9 00 69 1E FB 47   .......%s9..i..G
+  B3 F1 48 4A 58 97 21 1D E5 35 5B 22 F4 02 50 63   ..HJX.!..5["..Pc
+  44 E4 92 24 D4 B8 97 01 01 7B 5A DE CF 21 1C 3A   D..$.....{Z..!.:
+  09 B6 39 70 07 80 FD 80 62 CB 10 A9 00 02 84 BB   ..9p....b.......
+  B6 C8 79 46 5C B9 22 1C 62 3D 12 9A 2D 6A BD 47   ..yF\.".b=..-j.G
+  DA E9 9E 9B 4C 95 BA 9B 9F 60 C0 E4 96 95 EE 14   ....L....`......
+  89 2D 67 3F 99 BD 0D 09 B5 35 03 5E 4B 26 5C 63   .-g?.....5.^K&\c
+  28 E1 3F 2C DA A9 55 0A 33 CC 99 0B 6D 6A A4 FF   (.?,..U.3...mj..
+  30 8F D3 42 70 E7 E0 4B DC B9 C1 CE 4E B1 F6 B4   0..Bp..K....N...
+  59 00 E6 BB 32 52 A5 C8 1A F0 AD 54 CA 02 2E B3   Y...2R.....T....
+  EC BF 7D 46 9D 06 9B FD 2B 9C 44 E2 00 CD 9C 27   ..}F....+.D....'
+  25 71 B9 06 A8 33 51 FB A2 17 B5 89 CC 16 03 AC   %q...3Q.........
+  62 12 58 76 BA 73 D9 10 B2 16 4E FB 04 11 5F CD   b.Xv.s....N..._.
+  F8 B3 BF A6 6B 39 CB 22 06 0E F0 51 0B 0E 64 32   ....k9."...Q..d2
+  5C D1 15 DF 89 0A E1 B6 2F 7C 12 87 3D CB 1A 9F   \......./|..=...
+  C7 0D 17 4F A7 78 A4 FB E5 3B 2C 98 B3 88 1D F1   ...O.x...;,.....
+  2B C7 12 A4 0A 7B A3 E6 86 AE D9 A3 63 97 16 B6   +....{......c...
+  CF 52 61 BC 45 03 54 74 AF 22 8A E9 D5 A1 69 C4   .Ra.E.Tt."....i.
+  F2 14 20 3E 78 A7 91 29 90 16 1F 75 8C 78 06 DA   .. >x..)...u.x..
+  76 D5 76 5D A9 76 9D B1 78 B2 81 19 43 FE D7 27   v.v].v..x...C..'
+  86 8F 13 C0 40 C2 C6 F9 A3 06 9D 77 E9 63 E2 DE   ....@......w.c..
+  92 3E 66 37 4E CD 1A AB D9 02 E7 0C A9 56 5C 34   .>f7N........V\4
+  84 3D 88 83 12 66 07 4E D7 A2 3B 68 F5 CC 70 89   .=...f.N..;h..p.
+  72 C1 0A 86 F0 76 A5 0F FF 90 50 20               r....v....P 
+
+[AdvKeyEx: adv] recv InitMsg in state INIT_SENT from bob to ana
+[AdvKeyEx: adv] relay InitBA to ana, new state INIT_RCVD
+[Comm] MsgHeader: { INIT_B from bob to ana sid D1164C0627F034E0 }
+INIT_B: 
+ nonce[32]:
+  2D 86 AA 67 F5 85 6C D7 0A 6C E8 AC 1D 46 38 B0   -..g..l..l...F8.
+  B5 64 9C 96 06 BB 9E E9 50 1D 35 5D C1 AD 8B 3C   .d......P.5]...<
+ dhPubKey[812]:
+  30 82 03 28 30 82 01 9B 06 09 2A 86 48 86 F7 0D   0..(0.....*.H...
+  01 03 01 30 82 01 8C 02 82 01 81 00 FF FF FF FF   ...0............
+  FF FF FF FF AD F8 54 58 A2 BB 4A 9A AF DC 56 20   ......TX..J...V 
+  27 3D 3C F1 D8 B9 C5 83 CE 2D 36 95 A9 E1 36 41   '=<......-6...6A
+  14 64 33 FB CC 93 9D CE 24 9B 3E F9 7D 2F E3 63   .d3.....$.>.}/.c
+  63 0C 75 D8 F6 81 B2 02 AE C4 61 7A D3 DF 1E D5   c.u.......az....
+  D5 FD 65 61 24 33 F5 1F 5F 06 6E D0 85 63 65 55   ..ea$3.._.n..ceU
+  3D ED 1A F3 B5 57 13 5E 7F 57 C9 35 98 4F 0C 70   =....W.^.W.5.O.p
+  E0 E6 8B 77 E2 A6 89 DA F3 EF E8 72 1D F1 58 A1   ...w.......r..X.
+  36 AD E7 35 30 AC CA 4F 48 3A 79 7A BC 0A B1 82   6..50..OH:yz....
+  B3 24 FB 61 D1 08 A9 4B B2 C8 E3 FB B9 6A DA B7   .$.a...K.....j..
+  60 D7 F4 68 1D 4F 42 A3 DE 39 4D F4 AE 56 ED E7   `..h.OB..9M..V..
+  63 72 BB 19 0B 07 A7 C8 EE 0A 6D 70 9E 02 FC E1   cr........mp....
+  CD F7 E2 EC C0 34 04 CD 28 34 2F 61 91 72 FE 9C   .....4..(4/a.r..
+  E9 85 83 FF 8E 4F 12 32 EE F2 81 83 C3 FE 3B 1B   .....O.2......;.
+  4C 6F AD 73 3B B5 FC BC 2E C2 20 05 C5 8E F1 83   Lo.s;..... .....
+  7D 16 83 B2 C6 F3 4A 26 C1 B2 EF FA 88 6B 42 38   }.....J&.....kB8
+  61 1F CF DC DE 35 5B 3B 65 19 03 5B BC 34 F4 DE   a....5[;e..[.4..
+  F9 9C 02 38 61 B4 6F C9 D6 E6 C9 07 7A D9 1D 26   ...8a.o.....z..&
+  91 F7 F7 EE 59 8C B0 FA C1 86 D9 1C AE FE 13 09   ....Y...........
+  85 13 92 70 B4 13 0C 93 BC 43 79 44 F4 FD 44 52   ...p.....CyD..DR
+  E2 D7 4D D3 64 F2 E2 1E 71 F5 4B FF 5C AE 82 AB   ..M.d...q.K.\...
+  9C 9D F6 9E E8 6D 2B C5 22 36 3A 0D AB C5 21 97   .....m+."6:...!.
+  9B 0D EA DA 1D BF 9A 42 D5 C4 48 4E 0A BC D0 6B   .......B..HN...k
+  FA 53 DD EF 3C 1B 20 EE 3F D5 9D 7C 25 E4 1D 2B   .S..<. .?..|%..+
+  66 C6 2E 37 FF FF FF FF FF FF FF FF 02 01 02 02   f..7............
+  02 01 13 03 82 01 85 00 02 82 01 80 36 EA 7B 2A   ............6.{*
+  85 C2 9E 16 0D D3 91 25 73 39 F9 00 69 1E FB 47   .......%s9..i..G
+  B3 F1 48 4A 58 97 21 1D E5 35 5B 22 F4 02 50 63   ..HJX.!..5["..Pc
+  44 E4 92 24 D4 B8 97 01 01 7B 5A DE CF 21 1C 3A   D..$.....{Z..!.:
+  09 B6 39 70 07 80 FD 80 62 CB 10 A9 00 02 84 BB   ..9p....b.......
+  B6 C8 79 46 5C B9 22 1C 62 3D 12 9A 2D 6A BD 47   ..yF\.".b=..-j.G
+  DA E9 9E 9B 4C 95 BA 9B 9F 60 C0 E4 96 95 EE 14   ....L....`......
+  89 2D 67 3F 99 BD 0D 09 B5 35 03 5E 4B 26 5C 63   .-g?.....5.^K&\c
+  28 E1 3F 2C DA A9 55 0A 33 CC 99 0B 6D 6A A4 FF   (.?,..U.3...mj..
+  30 8F D3 42 70 E7 E0 4B DC B9 C1 CE 4E B1 F6 B4   0..Bp..K....N...
+  59 00 E6 BB 32 52 A5 C8 1A F0 AD 54 CA 02 2E B3   Y...2R.....T....
+  EC BF 7D 46 9D 06 9B FD 2B 9C 44 E2 00 CD 9C 27   ..}F....+.D....'
+  25 71 B9 06 A8 33 51 FB A2 17 B5 89 CC 16 03 AC   %q...3Q.........
+  62 12 58 76 BA 73 D9 10 B2 16 4E FB 04 11 5F CD   b.Xv.s....N..._.
+  F8 B3 BF A6 6B 39 CB 22 06 0E F0 51 0B 0E 64 32   ....k9."...Q..d2
+  5C D1 15 DF 89 0A E1 B6 2F 7C 12 87 3D CB 1A 9F   \......./|..=...
+  C7 0D 17 4F A7 78 A4 FB E5 3B 2C 98 B3 88 1D F1   ...O.x...;,.....
+  2B C7 12 A4 0A 7B A3 E6 86 AE D9 A3 63 97 16 B6   +....{......c...
+  CF 52 61 BC 45 03 54 74 AF 22 8A E9 D5 A1 69 C4   .Ra.E.Tt."....i.
+  F2 14 20 3E 78 A7 91 29 90 16 1F 75 8C 78 06 DA   .. >x..)...u.x..
+  76 D5 76 5D A9 76 9D B1 78 B2 81 19 43 FE D7 27   v.v].v..x...C..'
+  86 8F 13 C0 40 C2 C6 F9 A3 06 9D 77 E9 63 E2 DE   ....@......w.c..
+  92 3E 66 37 4E CD 1A AB D9 02 E7 0C A9 56 5C 34   .>f7N........V\4
+  84 3D 88 83 12 66 07 4E D7 A2 3B 68 F5 CC 70 89   .=...f.N..;h..p.
+  72 C1 0A 86 F0 76 A5 0F FF 90 50 20               r....v....P 
+
+[KeyEx: ana] recv InitMsg in state INIT_SENT
+[KeyEx: ana] build AuthMsg to bob, new state AUTH_SENT
+[Comm] MsgHeader: { AUTH_A from ana to bob sid D1164C0627F034E0 }
+AUTH_A: 
+ auth[72]:
+  30 46 02 21 00 BA DB 0A FF 9E 01 78 D1 19 FE BC   0F.!.......x....
+  F6 4A EF C1 5E 6F F1 83 45 5C 58 3A 31 17 2F B9   .J..^o..E\X:1./.
+  43 75 A5 6D 41 02 21 00 AA E2 03 57 7A B9 5C DF   Cu.mA.!....Wz.\.
+  4A A8 81 58 24 D3 F9 FA 47 18 A9 51 33 7E FD DC   J..X$...G..Q3~..
+  B0 62 28 70 D0 ED 54 F1                           .b(p..T.
+ cert[1688]:
+  30 82 06 94 30 82 06 37 A0 03 02 01 02 02 08 23   0...0..7.......#
+  77 5A C9 65 B4 B9 6B 30 0D 06 09 60 86 48 01 65   wZ.e..k0...`.H.e
+  03 04 03 02 05 00 30 72 31 0B 30 09 06 03 55 04   ......0r1.0...U.
+  06 13 02 52 4F 31 12 30 10 06 03 55 04 08 13 09   ...RO1.0...U....
+  42 75 63 68 61 72 65 73 74 31 12 30 10 06 03 55   Bucharest1.0...U
+  04 07 13 09 42 75 63 68 61 72 65 73 74 31 10 30   ....Bucharest1.0
+  0E 06 03 55 04 0A 13 07 4F 43 20 4C 61 62 73 31   ...U....OC Labs1
+  10 30 0E 06 03 55 04 0B 13 07 4F 43 4C 20 50 4B   .0...U....OCL PK
+  49 31 17 30 15 06 03 55 04 03 13 0E 43 41 20 52   I1.0...U....CA R
+  6F 6F 74 20 44 53 41 20 33 4B 30 1E 17 0D 32 32   oot DSA 3K0...22
+  30 31 30 36 31 37 34 37 31 31 5A 17 0D 33 31 31   0106174711Z..311
+  31 31 35 31 37 34 37 31 31 5A 30 68 31 0B 30 09   115174711Z0h1.0.
+  06 03 55 04 06 13 02 52 4F 31 12 30 10 06 03 55   ..U....RO1.0...U
+  04 08 13 09 42 75 63 68 61 72 65 73 74 31 12 30   ....Bucharest1.0
+  10 06 03 55 04 07 13 09 42 75 63 68 61 72 65 73   ...U....Buchares
+  74 31 10 30 0E 06 03 55 04 0A 13 07 53 52 53 20   t1.0...U....SRS 
+  4C 61 62 31 11 30 0F 06 03 55 04 0B 13 08 53 52   Lab1.0...U....SR
+  53 20 55 73 65 72 31 0C 30 0A 06 03 55 04 03 13   S User1.0...U...
+  03 61 6E 61 30 82 04 C6 30 82 03 39 06 07 2A 86   .ana0...0..9..*.
+  48 CE 38 04 01 30 82 03 2C 02 82 01 81 00 EA 9C   H.8..0..,.......
+  DA 9F 5F BD A6 6D D8 30 49 46 09 40 56 87 AB 7C   .._..m.0IF.@V..|
+  F3 85 38 E0 58 D1 E2 F6 8D EA 95 36 48 66 E1 C0   ..8.X......6Hf..
+  5B EA CD ED 24 22 7E DE E2 8C AD 80 BC EC AD 39   [...$"~........9
+  91 3B E3 B7 13 26 7B 3B 96 C8 D9 F0 F6 A0 3B 5D   .;...&{;......;]
+  FC 92 22 D5 CF E4 AF CC 99 82 F3 37 84 F7 60 C3   .."........7..`.
+  B7 59 AE BE 3B BE 90 98 A6 B8 4C 96 F1 FD E4 4C   .Y..;.....L....L
+  E1 1C 08 4C 2A 08 2C 7A 76 A0 EF 14 29 28 B4 F3   ...L*.,zv...)(..
+  28 40 6A B9 BE B2 4F 84 57 7D D0 F4 6C E8 6F D8   (@j...O.W}..l.o.
+  F0 84 88 26 99 98 BF 47 42 D6 42 5F 7A 0E C7 5D   ...&...GB.B_z..]
+  86 60 C5 DD 6F 4E 3B 3D 3B EE 81 B2 C2 1A FE 8C   .`..oN;=;.......
+  9E 8B 84 B8 71 92 E2 CC 20 F9 61 D2 BC D8 13 3A   ....q... .a....:
+  FC F3 67 5A B8 06 81 CB 37 4C 78 F3 3E 29 D1 01   ..gZ....7Lx.>)..
+  10 83 D8 9F 9C 57 28 B9 46 76 FC CB 1B 57 BC 60   .....W(.Fv...W.`
+  28 8C 15 D8 5A E8 38 AE 19 41 C5 A2 0A E2 B2 04   (...Z.8..A......
+  9B 35 83 FE 30 DA 45 5D DB 3E 6A D9 B9 95 5C D9   .5..0.E].>j...\.
+  BB 56 81 43 16 22 BE B0 F9 2D A5 33 FC AB 49 6C   .V.C."...-.3..Il
+  EB C4 47 AA 1B B5 A8 03 95 22 F2 DA 98 FF 41 62   ..G......"....Ab
+  89 32 3A 64 DF 62 6A B6 88 18 70 92 7D CE E3 87   .2:d.bj...p.}...
+  F1 3B 5C 9D 24 D6 CB A1 D8 2E D3 75 A0 82 50 6E   .;\.$......u..Pn
+  E8 7B C7 AE 30 06 7F 4A 94 E2 EE 36 3D 99 2C 40   .{..0..J...6=.,@
+  F2 72 5B 5D B4 B3 52 5E BD E2 2B BB FD 0F A1 24   .r[]..R^..+....$
+  A5 88 B0 F5 A4 AC B3 A8 69 51 AF F0 9F 8C 81 98   ........iQ......
+  FB 5B 53 DA 0C 93 1C ED C5 98 B4 F8 35 B7 79 D0   .[S.........5.y.
+  4D 99 02 6C 7B A0 8C 4B 27 F1 18 AC 1E 3D 02 21   M..l{..K'....=.!
+  00 C4 EE AC 2B BA B7 9B D8 31 94 6D 71 7A 56 A6   ....+....1.mqzV.
+  E6 87 54 7A A8 E9 C5 49 4A 5A 4B 2F 4C A1 3D 6C   ..Tz...IJZK/L.=l
+  11 02 82 01 80 42 E5 FA 78 44 F8 FA 9D 89 98 D8   .....B..xD......
+  30 D0 04 E7 B1 5B 1D 27 6B CB E5 F1 2C 35 EC 90   0....[.'k...,5..
+  C1 A2 5F 58 32 01 8A 67 24 BD 9C DB E8 03 B6 75   .._X2..g$......u
+  50 9B ED 16 7F 3D 7C F8 59 9F C8 65 C6 D5 A0 F7   P....=|.Y..e....
+  91 58 C1 BC 91 8F 00 A9 44 D0 AD 0F 38 F5 20 FB   .X......D...8. .
+  91 D8 5D 82 67 4D 0D 5F 87 4F AA 5F CD FE 56 CD   ..].gM._.O._..V.
+  17 8C 1A FD C7 CE 87 95 72 7B 7D EE 96 6E D0 B3   ........r{}..n..
+  C5 CE DC EF 8A CA 62 8B EF EB F2 D1 05 C7 AF F8   ......b.........
+  EB 0D A9 C9 61 07 37 DD 64 DC E1 23 7B 82 C1 B2   ....a.7.d..#{...
+  BC 86 08 D5 5F FD A9 8D 71 89 44 4E 65 88 33 15   ...._...q.DNe.3.
+  66 9C 05 71 6B DE 36 C7 8B 13 0A A3 DF 2E 4D 60   f..qk.6.......M`
+  99 14 C7 C8 DC 47 0F 4E 30 01 87 C7 75 F8 1E 7B   .....G.N0...u..{
+  1A 9C 0D CE 40 5D 6E AB 2C BB 9D 9C 4E F4 44 12   ....@]n.,...N.D.
+  BA 57 3D D4 03 C4 ED 7B C2 36 47 72 F5 6A 30 C4   .W=....{.6Gr.j0.
+  8D E7 8F 50 03 F9 37 1C 55 26 2D 2C 8A C2 24 6A   ...P..7.U&-,..$j
+  DE 3B 02 FD CF CF 5C BF DE 74 FB CB FE 6E 0E 0F   .;....\..t...n..
+  DF 31 60 76 4F 84 D3 11 C1 79 A4 0A F6 79 A8 F4   .1`vO....y...y..
+  7A B1 3C 8F 70 68 93 24 5E B1 1E DC CE 45 1F A2   z.<.ph.$^....E..
+  AB 98 00 19 98 7F 12 5D 8D C9 66 22 D4 19 BA 0D   .......]..f"....
+  71 F1 6C 60 24 DC E9 D3 64 C3 B2 6D 8E C1 A3 C8   q.l`$...d..m....
+  28 F6 C9 D1 4B 1D 03 33 B9 5D B7 7B FD BE 3C 6B   (...K..3.].{..<k
+  CE 53 37 A1 A5 A7 AC E1 01 11 21 94 48 44 71 97   .S7.......!.HDq.
+  E2 A3 44 CC 42 3B E7 68 BB 89 E2 7B E6 CB D2 20   ..D.B;.h...{... 
+  85 61 4A 5A 33 60 BE 23 B1 BF BB 6E 6E 64 71 36   .aJZ3`.#...nndq6
+  3D 32 C8 5D 31 03 82 01 85 00 02 82 01 80 2E F3   =2.]1...........
+  36 14 7E C5 80 6F AC F0 A8 B0 C4 82 55 5A 8A 04   6.~..o......UZ..
+  F1 8A 7A 47 CC FE 86 AE 70 93 EC 42 14 77 0C 0A   ..zG....p..B.w..
+  3D B2 D6 18 E1 6A E1 57 E3 2A 42 0F 2F 72 1D 97   =....j.W.*B./r..
+  FF B6 75 EC 55 27 49 2A 7F D6 8F F0 F5 72 09 E5   ..u.U'I*.....r..
+  2A 93 41 58 CA 8E 39 B0 42 20 33 74 0C A4 CE 5F   *.AX..9.B 3t..._
+  DF 71 FA 6A 57 40 AC F2 F1 9C 2A 32 58 A4 3B 6F   .q.jW@....*2X.;o
+  B8 24 97 27 94 A7 84 E5 25 BC 0C 6A 20 79 5C 29   .$.'....%..j y\)
+  93 E7 41 9D E5 3E 35 F6 A0 FD 9E 73 1D 06 69 53   ..A..>5....s..iS
+  3A 8E 16 7C 0C 1D 69 2F A8 3B 5D 16 7C 20 06 5C   :..|..i/.;].| .\
+  D7 BA 1D 6C 8B DD CF FD DF C5 A6 61 95 E8 0F CD   ...l.......a....
+  40 D9 35 78 DA 87 9C 38 F7 EE D7 50 70 9F DB 89   @.5x...8...Pp...
+  3F 7C C9 65 DC CA 06 F5 5C 4C 0C FF 7C F0 CE A8   ?|.e....\L..|...
+  18 7F 97 9C EB B5 BA 33 BD 5E C3 F1 EF 78 B0 C3   .......3.^...x..
+  B6 79 B8 3C FD 34 B1 55 F3 36 DA F9 53 4C 64 FE   .y.<.4.U.6..SLd.
+  1E 39 53 34 AB 41 38 4E E8 A2 BC 25 B0 9B D5 98   .9S4.A8N...%....
+  6F F8 9E 64 E2 2B F8 BF B9 EE E2 12 30 26 18 B0   o..d.+......0&..
+  4B 5F 58 0E C8 3C 1D AE 11 1F 29 35 21 9E E8 DE   K_X..<....)5!...
+  9E 82 91 F1 ED E8 81 DF 9F 2C BF B8 E7 CB D5 03   .........,......
+  67 43 77 2E E9 5B 37 1D BF 0A 40 34 DE EB 23 11   gCw..[7...@4..#.
+  95 B1 48 15 2D D6 0A 56 98 DF 75 91 E4 EC 92 F2   ..H.-..V..u.....
+  B4 0B 42 45 7A 18 C0 44 CC E7 6F 94 9E C0 94 10   ..BEz..D..o.....
+  F1 79 74 AA 1E 62 DD 17 24 6D 32 F8 8D 2C D4 D2   .yt..b..$m2..,..
+  D9 4C 3A 31 44 FA 47 87 30 D2 88 D4 02 84 C0 05   .L:1D.G.0.......
+  5D 56 86 44 C7 F3 06 47 66 50 47 B6 90 06 A3 4F   ]V.D...GfPG....O
+  30 4D 30 1D 06 03 55 1D 0E 04 16 04 14 A3 C4 C6   0M0...U.........
+  DC FA 1E 8E 13 EE 2C D6 01 7B D9 05 13 8B FF DE   ......,..{......
+  1A 30 0B 06 03 55 1D 0F 04 04 03 02 05 A0 30 1F   .0...U........0.
+  06 03 55 1D 23 04 18 30 16 80 14 0A A2 33 45 21   ..U.#..0.....3E!
+  C5 95 13 59 DB A5 A4 44 16 98 98 74 FA 6D 53 30   ...Y...D...t.mS0
+  0D 06 09 60 86 48 01 65 03 04 03 02 05 00 03 48   ...`.H.e.......H
+  00 30 45 02 20 19 E5 00 65 27 68 99 9F 9A 9E 9B   .0E. ...e'h.....
+  02 9B 82 5C 76 D5 B3 61 BE AE 13 84 7F 8F 6F 21   ...\v..a......o!
+  DE 8C E6 B1 CF 02 21 00 A8 00 2D F1 09 49 38 7D   ......!...-..I8}
+  10 D5 C2 59 ED 1A 0C 77 52 BF 46 6E 9D 12 B8 7B   ...Y...wR.Fn...{
+  17 C5 1A 85 DB 30 98 29                           .....0.)
+
+[AdvKeyEx: adv] recv AuthMsg in state INIT_RCVD from ana to bob
+[AdvKeyEx: adv] relay AuthAB to bob, new state AUTH_SENT
+[Comm] MsgHeader: { AUTH_A from ana to bob sid D1164C0627F034E0 }
+AUTH_A: 
+ auth[72]:
+  30 46 02 21 00 BA DB 0A FF 9E 01 78 D1 19 FE BC   0F.!.......x....
+  F6 4A EF C1 5E 6F F1 83 45 5C 58 3A 31 17 2F B9   .J..^o..E\X:1./.
+  43 75 A5 6D 41 02 21 00 AA E2 03 57 7A B9 5C DF   Cu.mA.!....Wz.\.
+  4A A8 81 58 24 D3 F9 FA 47 18 A9 51 33 7E FD DC   J..X$...G..Q3~..
+  B0 62 28 70 D0 ED 54 F1                           .b(p..T.
+ cert[1688]:
+  30 82 06 94 30 82 06 37 A0 03 02 01 02 02 08 23   0...0..7.......#
+  77 5A C9 65 B4 B9 6B 30 0D 06 09 60 86 48 01 65   wZ.e..k0...`.H.e
+  03 04 03 02 05 00 30 72 31 0B 30 09 06 03 55 04   ......0r1.0...U.
+  06 13 02 52 4F 31 12 30 10 06 03 55 04 08 13 09   ...RO1.0...U....
+  42 75 63 68 61 72 65 73 74 31 12 30 10 06 03 55   Bucharest1.0...U
+  04 07 13 09 42 75 63 68 61 72 65 73 74 31 10 30   ....Bucharest1.0
+  0E 06 03 55 04 0A 13 07 4F 43 20 4C 61 62 73 31   ...U....OC Labs1
+  10 30 0E 06 03 55 04 0B 13 07 4F 43 4C 20 50 4B   .0...U....OCL PK
+  49 31 17 30 15 06 03 55 04 03 13 0E 43 41 20 52   I1.0...U....CA R
+  6F 6F 74 20 44 53 41 20 33 4B 30 1E 17 0D 32 32   oot DSA 3K0...22
+  30 31 30 36 31 37 34 37 31 31 5A 17 0D 33 31 31   0106174711Z..311
+  31 31 35 31 37 34 37 31 31 5A 30 68 31 0B 30 09   115174711Z0h1.0.
+  06 03 55 04 06 13 02 52 4F 31 12 30 10 06 03 55   ..U....RO1.0...U
+  04 08 13 09 42 75 63 68 61 72 65 73 74 31 12 30   ....Bucharest1.0
+  10 06 03 55 04 07 13 09 42 75 63 68 61 72 65 73   ...U....Buchares
+  74 31 10 30 0E 06 03 55 04 0A 13 07 53 52 53 20   t1.0...U....SRS 
+  4C 61 62 31 11 30 0F 06 03 55 04 0B 13 08 53 52   Lab1.0...U....SR
+  53 20 55 73 65 72 31 0C 30 0A 06 03 55 04 03 13   S User1.0...U...
+  03 61 6E 61 30 82 04 C6 30 82 03 39 06 07 2A 86   .ana0...0..9..*.
+  48 CE 38 04 01 30 82 03 2C 02 82 01 81 00 EA 9C   H.8..0..,.......
+  DA 9F 5F BD A6 6D D8 30 49 46 09 40 56 87 AB 7C   .._..m.0IF.@V..|
+  F3 85 38 E0 58 D1 E2 F6 8D EA 95 36 48 66 E1 C0   ..8.X......6Hf..
+  5B EA CD ED 24 22 7E DE E2 8C AD 80 BC EC AD 39   [...$"~........9
+  91 3B E3 B7 13 26 7B 3B 96 C8 D9 F0 F6 A0 3B 5D   .;...&{;......;]
+  FC 92 22 D5 CF E4 AF CC 99 82 F3 37 84 F7 60 C3   .."........7..`.
+  B7 59 AE BE 3B BE 90 98 A6 B8 4C 96 F1 FD E4 4C   .Y..;.....L....L
+  E1 1C 08 4C 2A 08 2C 7A 76 A0 EF 14 29 28 B4 F3   ...L*.,zv...)(..
+  28 40 6A B9 BE B2 4F 84 57 7D D0 F4 6C E8 6F D8   (@j...O.W}..l.o.
+  F0 84 88 26 99 98 BF 47 42 D6 42 5F 7A 0E C7 5D   ...&...GB.B_z..]
+  86 60 C5 DD 6F 4E 3B 3D 3B EE 81 B2 C2 1A FE 8C   .`..oN;=;.......
+  9E 8B 84 B8 71 92 E2 CC 20 F9 61 D2 BC D8 13 3A   ....q... .a....:
+  FC F3 67 5A B8 06 81 CB 37 4C 78 F3 3E 29 D1 01   ..gZ....7Lx.>)..
+  10 83 D8 9F 9C 57 28 B9 46 76 FC CB 1B 57 BC 60   .....W(.Fv...W.`
+  28 8C 15 D8 5A E8 38 AE 19 41 C5 A2 0A E2 B2 04   (...Z.8..A......
+  9B 35 83 FE 30 DA 45 5D DB 3E 6A D9 B9 95 5C D9   .5..0.E].>j...\.
+  BB 56 81 43 16 22 BE B0 F9 2D A5 33 FC AB 49 6C   .V.C."...-.3..Il
+  EB C4 47 AA 1B B5 A8 03 95 22 F2 DA 98 FF 41 62   ..G......"....Ab
+  89 32 3A 64 DF 62 6A B6 88 18 70 92 7D CE E3 87   .2:d.bj...p.}...
+  F1 3B 5C 9D 24 D6 CB A1 D8 2E D3 75 A0 82 50 6E   .;\.$......u..Pn
+  E8 7B C7 AE 30 06 7F 4A 94 E2 EE 36 3D 99 2C 40   .{..0..J...6=.,@
+  F2 72 5B 5D B4 B3 52 5E BD E2 2B BB FD 0F A1 24   .r[]..R^..+....$
+  A5 88 B0 F5 A4 AC B3 A8 69 51 AF F0 9F 8C 81 98   ........iQ......
+  FB 5B 53 DA 0C 93 1C ED C5 98 B4 F8 35 B7 79 D0   .[S.........5.y.
+  4D 99 02 6C 7B A0 8C 4B 27 F1 18 AC 1E 3D 02 21   M..l{..K'....=.!
+  00 C4 EE AC 2B BA B7 9B D8 31 94 6D 71 7A 56 A6   ....+....1.mqzV.
+  E6 87 54 7A A8 E9 C5 49 4A 5A 4B 2F 4C A1 3D 6C   ..Tz...IJZK/L.=l
+  11 02 82 01 80 42 E5 FA 78 44 F8 FA 9D 89 98 D8   .....B..xD......
+  30 D0 04 E7 B1 5B 1D 27 6B CB E5 F1 2C 35 EC 90   0....[.'k...,5..
+  C1 A2 5F 58 32 01 8A 67 24 BD 9C DB E8 03 B6 75   .._X2..g$......u
+  50 9B ED 16 7F 3D 7C F8 59 9F C8 65 C6 D5 A0 F7   P....=|.Y..e....
+  91 58 C1 BC 91 8F 00 A9 44 D0 AD 0F 38 F5 20 FB   .X......D...8. .
+  91 D8 5D 82 67 4D 0D 5F 87 4F AA 5F CD FE 56 CD   ..].gM._.O._..V.
+  17 8C 1A FD C7 CE 87 95 72 7B 7D EE 96 6E D0 B3   ........r{}..n..
+  C5 CE DC EF 8A CA 62 8B EF EB F2 D1 05 C7 AF F8   ......b.........
+  EB 0D A9 C9 61 07 37 DD 64 DC E1 23 7B 82 C1 B2   ....a.7.d..#{...
+  BC 86 08 D5 5F FD A9 8D 71 89 44 4E 65 88 33 15   ...._...q.DNe.3.
+  66 9C 05 71 6B DE 36 C7 8B 13 0A A3 DF 2E 4D 60   f..qk.6.......M`
+  99 14 C7 C8 DC 47 0F 4E 30 01 87 C7 75 F8 1E 7B   .....G.N0...u..{
+  1A 9C 0D CE 40 5D 6E AB 2C BB 9D 9C 4E F4 44 12   ....@]n.,...N.D.
+  BA 57 3D D4 03 C4 ED 7B C2 36 47 72 F5 6A 30 C4   .W=....{.6Gr.j0.
+  8D E7 8F 50 03 F9 37 1C 55 26 2D 2C 8A C2 24 6A   ...P..7.U&-,..$j
+  DE 3B 02 FD CF CF 5C BF DE 74 FB CB FE 6E 0E 0F   .;....\..t...n..
+  DF 31 60 76 4F 84 D3 11 C1 79 A4 0A F6 79 A8 F4   .1`vO....y...y..
+  7A B1 3C 8F 70 68 93 24 5E B1 1E DC CE 45 1F A2   z.<.ph.$^....E..
+  AB 98 00 19 98 7F 12 5D 8D C9 66 22 D4 19 BA 0D   .......]..f"....
+  71 F1 6C 60 24 DC E9 D3 64 C3 B2 6D 8E C1 A3 C8   q.l`$...d..m....
+  28 F6 C9 D1 4B 1D 03 33 B9 5D B7 7B FD BE 3C 6B   (...K..3.].{..<k
+  CE 53 37 A1 A5 A7 AC E1 01 11 21 94 48 44 71 97   .S7.......!.HDq.
+  E2 A3 44 CC 42 3B E7 68 BB 89 E2 7B E6 CB D2 20   ..D.B;.h...{... 
+  85 61 4A 5A 33 60 BE 23 B1 BF BB 6E 6E 64 71 36   .aJZ3`.#...nndq6
+  3D 32 C8 5D 31 03 82 01 85 00 02 82 01 80 2E F3   =2.]1...........
+  36 14 7E C5 80 6F AC F0 A8 B0 C4 82 55 5A 8A 04   6.~..o......UZ..
+  F1 8A 7A 47 CC FE 86 AE 70 93 EC 42 14 77 0C 0A   ..zG....p..B.w..
+  3D B2 D6 18 E1 6A E1 57 E3 2A 42 0F 2F 72 1D 97   =....j.W.*B./r..
+  FF B6 75 EC 55 27 49 2A 7F D6 8F F0 F5 72 09 E5   ..u.U'I*.....r..
+  2A 93 41 58 CA 8E 39 B0 42 20 33 74 0C A4 CE 5F   *.AX..9.B 3t..._
+  DF 71 FA 6A 57 40 AC F2 F1 9C 2A 32 58 A4 3B 6F   .q.jW@....*2X.;o
+  B8 24 97 27 94 A7 84 E5 25 BC 0C 6A 20 79 5C 29   .$.'....%..j y\)
+  93 E7 41 9D E5 3E 35 F6 A0 FD 9E 73 1D 06 69 53   ..A..>5....s..iS
+  3A 8E 16 7C 0C 1D 69 2F A8 3B 5D 16 7C 20 06 5C   :..|..i/.;].| .\
+  D7 BA 1D 6C 8B DD CF FD DF C5 A6 61 95 E8 0F CD   ...l.......a....
+  40 D9 35 78 DA 87 9C 38 F7 EE D7 50 70 9F DB 89   @.5x...8...Pp...
+  3F 7C C9 65 DC CA 06 F5 5C 4C 0C FF 7C F0 CE A8   ?|.e....\L..|...
+  18 7F 97 9C EB B5 BA 33 BD 5E C3 F1 EF 78 B0 C3   .......3.^...x..
+  B6 79 B8 3C FD 34 B1 55 F3 36 DA F9 53 4C 64 FE   .y.<.4.U.6..SLd.
+  1E 39 53 34 AB 41 38 4E E8 A2 BC 25 B0 9B D5 98   .9S4.A8N...%....
+  6F F8 9E 64 E2 2B F8 BF B9 EE E2 12 30 26 18 B0   o..d.+......0&..
+  4B 5F 58 0E C8 3C 1D AE 11 1F 29 35 21 9E E8 DE   K_X..<....)5!...
+  9E 82 91 F1 ED E8 81 DF 9F 2C BF B8 E7 CB D5 03   .........,......
+  67 43 77 2E E9 5B 37 1D BF 0A 40 34 DE EB 23 11   gCw..[7...@4..#.
+  95 B1 48 15 2D D6 0A 56 98 DF 75 91 E4 EC 92 F2   ..H.-..V..u.....
+  B4 0B 42 45 7A 18 C0 44 CC E7 6F 94 9E C0 94 10   ..BEz..D..o.....
+  F1 79 74 AA 1E 62 DD 17 24 6D 32 F8 8D 2C D4 D2   .yt..b..$m2..,..
+  D9 4C 3A 31 44 FA 47 87 30 D2 88 D4 02 84 C0 05   .L:1D.G.0.......
+  5D 56 86 44 C7 F3 06 47 66 50 47 B6 90 06 A3 4F   ]V.D...GfPG....O
+  30 4D 30 1D 06 03 55 1D 0E 04 16 04 14 A3 C4 C6   0M0...U.........
+  DC FA 1E 8E 13 EE 2C D6 01 7B D9 05 13 8B FF DE   ......,..{......
+  1A 30 0B 06 03 55 1D 0F 04 04 03 02 05 A0 30 1F   .0...U........0.
+  06 03 55 1D 23 04 18 30 16 80 14 0A A2 33 45 21   ..U.#..0.....3E!
+  C5 95 13 59 DB A5 A4 44 16 98 98 74 FA 6D 53 30   ...Y...D...t.mS0
+  0D 06 09 60 86 48 01 65 03 04 03 02 05 00 03 48   ...`.H.e.......H
+  00 30 45 02 20 19 E5 00 65 27 68 99 9F 9A 9E 9B   .0E. ...e'h.....
+  02 9B 82 5C 76 D5 B3 61 BE AE 13 84 7F 8F 6F 21   ...\v..a......o!
+  DE 8C E6 B1 CF 02 21 00 A8 00 2D F1 09 49 38 7D   ......!...-..I8}
+  10 D5 C2 59 ED 1A 0C 77 52 BF 46 6E 9D 12 B8 7B   ...Y...wR.Fn...{
+  17 C5 1A 85 DB 30 98 29                           .....0.)
+
+[KeyEx: bob] recvAuth in state INIT_RCVD
+[KeyEx: bob] Successful verification of ana's authenticator (SIG-PKC-DHE-ILV)
+  Successful authentication: remote user is ana
+[KeyEx: bob] build AuthMsg to ana, new state INIT_RCVD
+[Comm] MsgHeader: { AUTH_B from bob to ana sid D1164C0627F034E0 }
+[KeyEx: bob] Responder: Auth handshake done, state ESTABLISHED. Success
+AUTH_B: 
+ auth[72]:
+  30 46 02 21 00 BF 51 B0 B5 9D 97 F6 46 DF E2 16   0F.!..Q.....F...
+  E9 5F 20 EE CE 04 6B B1 79 E7 3D 23 02 CF AF 10   ._ ...k.y.=#....
+  F4 CD FC 36 1E 02 21 00 B8 8A 9D 26 00 7A E2 A6   ...6..!....&.z..
+  CE ED 98 F5 6F 8A 4D DB E5 5D 07 43 84 4C 95 96   ....o.M..].C.L..
+  87 8C B4 A9 2C FD 0B DA                           ....,...
+ cert[1688]:
+  30 82 06 94 30 82 06 37 A0 03 02 01 02 02 08 3E   0...0..7.......>
+  05 E1 C7 A8 DD 26 A0 30 0D 06 09 60 86 48 01 65   .....&.0...`.H.e
+  03 04 03 02 05 00 30 72 31 0B 30 09 06 03 55 04   ......0r1.0...U.
+  06 13 02 52 4F 31 12 30 10 06 03 55 04 08 13 09   ...RO1.0...U....
+  42 75 63 68 61 72 65 73 74 31 12 30 10 06 03 55   Bucharest1.0...U
+  04 07 13 09 42 75 63 68 61 72 65 73 74 31 10 30   ....Bucharest1.0
+  0E 06 03 55 04 0A 13 07 4F 43 20 4C 61 62 73 31   ...U....OC Labs1
+  10 30 0E 06 03 55 04 0B 13 07 4F 43 4C 20 50 4B   .0...U....OCL PK
+  49 31 17 30 15 06 03 55 04 03 13 0E 43 41 20 52   I1.0...U....CA R
+  6F 6F 74 20 44 53 41 20 33 4B 30 1E 17 0D 32 32   oot DSA 3K0...22
+  30 31 30 36 31 37 34 37 32 31 5A 17 0D 33 31 31   0106174721Z..311
+  31 31 35 31 37 34 37 32 31 5A 30 68 31 0B 30 09   115174721Z0h1.0.
+  06 03 55 04 06 13 02 52 4F 31 12 30 10 06 03 55   ..U....RO1.0...U
+  04 08 13 09 42 75 63 68 61 72 65 73 74 31 12 30   ....Bucharest1.0
+  10 06 03 55 04 07 13 09 42 75 63 68 61 72 65 73   ...U....Buchares
+  74 31 10 30 0E 06 03 55 04 0A 13 07 53 52 53 20   t1.0...U....SRS 
+  4C 61 62 31 11 30 0F 06 03 55 04 0B 13 08 53 52   Lab1.0...U....SR
+  53 20 55 73 65 72 31 0C 30 0A 06 03 55 04 03 13   S User1.0...U...
+  03 62 6F 62 30 82 04 C6 30 82 03 39 06 07 2A 86   .bob0...0..9..*.
+  48 CE 38 04 01 30 82 03 2C 02 82 01 81 00 EA 9C   H.8..0..,.......
+  DA 9F 5F BD A6 6D D8 30 49 46 09 40 56 87 AB 7C   .._..m.0IF.@V..|
+  F3 85 38 E0 58 D1 E2 F6 8D EA 95 36 48 66 E1 C0   ..8.X......6Hf..
+  5B EA CD ED 24 22 7E DE E2 8C AD 80 BC EC AD 39   [...$"~........9
+  91 3B E3 B7 13 26 7B 3B 96 C8 D9 F0 F6 A0 3B 5D   .;...&{;......;]
+  FC 92 22 D5 CF E4 AF CC 99 82 F3 37 84 F7 60 C3   .."........7..`.
+  B7 59 AE BE 3B BE 90 98 A6 B8 4C 96 F1 FD E4 4C   .Y..;.....L....L
+  E1 1C 08 4C 2A 08 2C 7A 76 A0 EF 14 29 28 B4 F3   ...L*.,zv...)(..
+  28 40 6A B9 BE B2 4F 84 57 7D D0 F4 6C E8 6F D8   (@j...O.W}..l.o.
+  F0 84 88 26 99 98 BF 47 42 D6 42 5F 7A 0E C7 5D   ...&...GB.B_z..]
+  86 60 C5 DD 6F 4E 3B 3D 3B EE 81 B2 C2 1A FE 8C   .`..oN;=;.......
+  9E 8B 84 B8 71 92 E2 CC 20 F9 61 D2 BC D8 13 3A   ....q... .a....:
+  FC F3 67 5A B8 06 81 CB 37 4C 78 F3 3E 29 D1 01   ..gZ....7Lx.>)..
+  10 83 D8 9F 9C 57 28 B9 46 76 FC CB 1B 57 BC 60   .....W(.Fv...W.`
+  28 8C 15 D8 5A E8 38 AE 19 41 C5 A2 0A E2 B2 04   (...Z.8..A......
+  9B 35 83 FE 30 DA 45 5D DB 3E 6A D9 B9 95 5C D9   .5..0.E].>j...\.
+  BB 56 81 43 16 22 BE B0 F9 2D A5 33 FC AB 49 6C   .V.C."...-.3..Il
+  EB C4 47 AA 1B B5 A8 03 95 22 F2 DA 98 FF 41 62   ..G......"....Ab
+  89 32 3A 64 DF 62 6A B6 88 18 70 92 7D CE E3 87   .2:d.bj...p.}...
+  F1 3B 5C 9D 24 D6 CB A1 D8 2E D3 75 A0 82 50 6E   .;\.$......u..Pn
+  E8 7B C7 AE 30 06 7F 4A 94 E2 EE 36 3D 99 2C 40   .{..0..J...6=.,@
+  F2 72 5B 5D B4 B3 52 5E BD E2 2B BB FD 0F A1 24   .r[]..R^..+....$
+  A5 88 B0 F5 A4 AC B3 A8 69 51 AF F0 9F 8C 81 98   ........iQ......
+  FB 5B 53 DA 0C 93 1C ED C5 98 B4 F8 35 B7 79 D0   .[S.........5.y.
+  4D 99 02 6C 7B A0 8C 4B 27 F1 18 AC 1E 3D 02 21   M..l{..K'....=.!
+  00 C4 EE AC 2B BA B7 9B D8 31 94 6D 71 7A 56 A6   ....+....1.mqzV.
+  E6 87 54 7A A8 E9 C5 49 4A 5A 4B 2F 4C A1 3D 6C   ..Tz...IJZK/L.=l
+  11 02 82 01 80 42 E5 FA 78 44 F8 FA 9D 89 98 D8   .....B..xD......
+  30 D0 04 E7 B1 5B 1D 27 6B CB E5 F1 2C 35 EC 90   0....[.'k...,5..
+  C1 A2 5F 58 32 01 8A 67 24 BD 9C DB E8 03 B6 75   .._X2..g$......u
+  50 9B ED 16 7F 3D 7C F8 59 9F C8 65 C6 D5 A0 F7   P....=|.Y..e....
+  91 58 C1 BC 91 8F 00 A9 44 D0 AD 0F 38 F5 20 FB   .X......D...8. .
+  91 D8 5D 82 67 4D 0D 5F 87 4F AA 5F CD FE 56 CD   ..].gM._.O._..V.
+  17 8C 1A FD C7 CE 87 95 72 7B 7D EE 96 6E D0 B3   ........r{}..n..
+  C5 CE DC EF 8A CA 62 8B EF EB F2 D1 05 C7 AF F8   ......b.........
+  EB 0D A9 C9 61 07 37 DD 64 DC E1 23 7B 82 C1 B2   ....a.7.d..#{...
+  BC 86 08 D5 5F FD A9 8D 71 89 44 4E 65 88 33 15   ...._...q.DNe.3.
+  66 9C 05 71 6B DE 36 C7 8B 13 0A A3 DF 2E 4D 60   f..qk.6.......M`
+  99 14 C7 C8 DC 47 0F 4E 30 01 87 C7 75 F8 1E 7B   .....G.N0...u..{
+  1A 9C 0D CE 40 5D 6E AB 2C BB 9D 9C 4E F4 44 12   ....@]n.,...N.D.
+  BA 57 3D D4 03 C4 ED 7B C2 36 47 72 F5 6A 30 C4   .W=....{.6Gr.j0.
+  8D E7 8F 50 03 F9 37 1C 55 26 2D 2C 8A C2 24 6A   ...P..7.U&-,..$j
+  DE 3B 02 FD CF CF 5C BF DE 74 FB CB FE 6E 0E 0F   .;....\..t...n..
+  DF 31 60 76 4F 84 D3 11 C1 79 A4 0A F6 79 A8 F4   .1`vO....y...y..
+  7A B1 3C 8F 70 68 93 24 5E B1 1E DC CE 45 1F A2   z.<.ph.$^....E..
+  AB 98 00 19 98 7F 12 5D 8D C9 66 22 D4 19 BA 0D   .......]..f"....
+  71 F1 6C 60 24 DC E9 D3 64 C3 B2 6D 8E C1 A3 C8   q.l`$...d..m....
+  28 F6 C9 D1 4B 1D 03 33 B9 5D B7 7B FD BE 3C 6B   (...K..3.].{..<k
+  CE 53 37 A1 A5 A7 AC E1 01 11 21 94 48 44 71 97   .S7.......!.HDq.
+  E2 A3 44 CC 42 3B E7 68 BB 89 E2 7B E6 CB D2 20   ..D.B;.h...{... 
+  85 61 4A 5A 33 60 BE 23 B1 BF BB 6E 6E 64 71 36   .aJZ3`.#...nndq6
+  3D 32 C8 5D 31 03 82 01 85 00 02 82 01 80 6F 1B   =2.]1.........o.
+  64 F8 3C 35 B2 1F 91 08 A8 EF 9B 87 FE 80 5B 18   d.<5..........[.
+  D2 38 08 84 90 BB F6 5C 24 78 63 C5 B6 FD 9B 2A   .8.....\$xc....*
+  A3 49 D3 D2 A0 D7 EA 4D 53 D8 1D 63 EE BE C2 38   .I.....MS..c...8
+  26 BA F2 EF 3C 51 91 AA F4 4E A2 09 DE 30 13 BF   &...<Q...N...0..
+  4F 95 7A B0 6C BE 9F 5D 9E 4D 26 51 FC 61 CE 71   O.z.l..].M&Q.a.q
+  3F 2F EB 64 7A 63 A5 9E 3A F6 EA C8 22 10 0F AA   ?/.dzc..:..."...
+  BE 7B 92 00 53 45 1E BB E1 28 7B F0 4F 13 15 1C   .{..SE...({.O...
+  2A AF 42 6F 01 4D 51 3F C3 78 20 2C C6 75 47 54   *.Bo.MQ?.x ,.uGT
+  83 A8 BA 26 04 C3 02 B4 C8 9A 2F F1 88 A0 7E 1C   ...&....../...~.
+  F4 94 0A 48 49 BB 91 34 14 E5 02 16 99 50 FF AE   ...HI..4.....P..
+  EB C3 FE F2 1C 3F 95 2B CC EF D4 AF 1C 9E D1 D3   .....?.+........
+  AA 20 7F 48 FF DB 94 C6 43 54 E1 3F 22 65 80 37   . .H....CT.?"e.7
+  5B DD 5A 31 99 CF 1F FF 9E A7 4D BB B8 5B FF 15   [.Z1......M..[..
+  22 61 2E 16 44 A9 29 02 DE 42 C9 CE C4 AC B8 91   "a..D.)..B......
+  88 7E C2 87 4E 2F B1 96 14 A3 E2 29 AA 78 60 89   .~..N/.....).x`.
+  A1 C7 E7 94 B0 EF C0 49 8F 67 9C 56 F2 A2 AB DC   .......I.g.V....
+  7F EA EE C7 0D E2 04 3F 6D 55 0B A3 FC C7 47 7B   .......?mU....G{
+  F2 3A AD 98 12 DF BA F2 9D 70 5F 0C D5 72 51 B8   .:.......p_..rQ.
+  2C 35 FB DF 2A BE 7B B3 C1 14 63 CE 8B E1 95 8C   ,5..*.{...c.....
+  06 C8 73 1B 7A D9 EA D7 3E D5 D0 D4 76 91 37 4C   ..s.z...>...v.7L
+  6E F8 81 6F 0A E2 8D E5 D0 4C 37 8A 63 E1 80 3C   n..o.....L7.c..<
+  EB DA 70 F8 96 DE A3 31 86 F2 E1 F0 B3 EA ED A6   ..p....1........
+  08 B7 3D 1E 18 F7 25 74 3E FC F8 6A 19 62 06 1B   ..=...%t>..j.b..
+  37 34 10 74 C7 53 73 DC 01 A3 B8 1C F8 B5 A3 4F   74.t.Ss........O
+  30 4D 30 1D 06 03 55 1D 0E 04 16 04 14 AB 89 42   0M0...U........B
+  58 B2 F9 E1 ED EF A9 3D BA 28 88 47 F2 14 39 75   X......=.(.G..9u
+  2F 30 0B 06 03 55 1D 0F 04 04 03 02 05 A0 30 1F   /0...U........0.
+  06 03 55 1D 23 04 18 30 16 80 14 0A A2 33 45 21   ..U.#..0.....3E!
+  C5 95 13 59 DB A5 A4 44 16 98 98 74 FA 6D 53 30   ...Y...D...t.mS0
+  0D 06 09 60 86 48 01 65 03 04 03 02 05 00 03 48   ...`.H.e.......H
+  00 30 45 02 20 0A 47 33 81 A1 BF 65 30 CC 4A D6   .0E. .G3...e0.J.
+  E8 A9 4A DD F5 46 87 DF 87 9C AB B0 54 16 6C DE   ..J..F......T.l.
+  CC 67 13 B6 E6 02 21 00 AB 72 CA 18 41 17 A1 EB   .g....!..r..A...
+  7D E3 6E C7 E3 0E 80 DC A5 76 FF E2 C7 5C 3D F8   }.n......v...\=.
+  1C 1D 2A DA 35 55 74 EB                           ..*.5Ut.
+
+[AdvKeyEx: adv] recv AuthMsg in state AUTH_SENT from bob to ana
+[AdvKeyEx: adv] Generated session keys with Bob.
+[AdvKeyEx: adv] Attack successful, state ESTABLISHED. Bob believes peer is ana
+[AdvKeyEx: adv] sendFail to ana: Session aborted
+[Comm] MsgHeader: { FAIL_B from bob to ana sid D1164C0627F034E0 }
+FAIL_B: { Session aborted }
+
+[KeyEx: ana] recvFail, new state FAILED (Fail). From bob: Session aborted
+
+>> Current sessions
+[Party: ana] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from ana to bob state FAILED
+[Party: bob] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from bob to ana state ESTABLISHED
+[Party: adv] 1 sessions
+ Session[0]: sid D1164C0627F034E0 from adv to bob state ESTABLISHED
+
+>> Key exchange / interleaving attack finished (success) <<
+>> System ready for communications <<
+Party[adv]: sends message to bob
+  44 65 61 72 20 42 6F 62 2C 20 74 72 61 6E 73 66   Dear Bob, transf
+  65 72 20 24 31 30 30 20 74 6F 20 53 61 6D 2E 0A   er $100 to Sam..
+  20 54 68 61 6E 6B 73 2C 20 41 6E 61                Thanks, Ana
+[Comm] MsgHeader: { DATA from adv to bob sid D1164C0627F034E0 }
+AE_DATA[44]:
+  C3 FA D1 AA 0E 95 CC BA E9 26 AA DA 8C 78 EF 57   .........&...x.W
+  22 78 7C 76 87 22 7E D7 44 91 E1 3D 4C 71 76 92   "x|v."~.D..=Lqv.
+  7E 09 20 5B 93 97 C5 4D EC 88 3B FA               ~. [...M..;.
+ IV[16]:
+  76 A5 DF 21 CC D7 80 62 56 7A A0 88 F1 59 15 75   v..!...bVz...Y.u
+ mac[32]:
+  36 F8 8D 0A D2 5D 12 BD 45 07 69 27 CA 56 D2 53   6....]..E.i'.V.S
+  41 B3 D1 BC ED 57 E2 7F A6 F3 97 FC 46 0F 0D C1   A....W......F...
+
+Party[bob]: rcvd message from adv (ana). Accepted
+  44 65 61 72 20 42 6F 62 2C 20 74 72 61 6E 73 66   Dear Bob, transf
+  65 72 20 24 31 30 30 20 74 6F 20 53 61 6D 2E 0A   er $100 to Sam..
+  20 54 68 61 6E 6B 73 2C 20 41 6E 61                Thanks, Ana
+Party[bob]: sends message to ana
+  52 69 67 68 74 20 61 77 61 79 2C 20 41 6E 61 2E   Right away, Ana.
+  0A 20 59 6F 75 72 20 66 61 69 74 68 66 75 6C 20   . Your faithful 
+  62 61 6E 6B 65 72 20 42 6F 62                     banker Bob
+[Comm] MsgHeader: { DATA from bob to ana sid D1164C0627F034E0 }
+AE_DATA[42]:
+  B9 D4 ED 70 9C 2A 9E A9 F7 07 14 29 CE 4E 5E 89   ...p.*.....).N^.
+  9D 33 9D 51 16 6D 16 3C A2 5A 94 E7 A6 B3 22 7D   .3.Q.m.<.Z...."}
+  16 45 8B 12 8F 13 FD B4 CE F7                     .E........
+ IV[16]:
+  46 79 B7 25 FA 09 99 F3 63 1B F2 3F 16 B2 0B D5   Fy.%....c..?....
+ mac[32]:
+  BA A1 0F DB 6D 3B E4 0C F9 57 7A E8 DB B7 9D 77   ....m;...Wz....w
+  D3 3F 3C A4 8F 80 29 69 7E 15 17 2C 4E E3 14 A2   .?<...)i~..,N...
+
+Party[adv]: rcvd message from bob (bob). Accepted
+  52 69 67 68 74 20 61 77 61 79 2C 20 41 6E 61 2E   Right away, Ana.
+  0A 20 59 6F 75 72 20 66 61 69 74 68 66 75 6C 20   . Your faithful 
+  62 61 6E 6B 65 72 20 42 6F 62                     banker Bob
+
+>> Test ended: success <<
+[AppMsgThread:  bob] Terminated
+[AppMsgThread:  adv] Terminated
+[AppMsgThread:  ana] Terminated
