@@ -181,7 +181,6 @@ Universitatea Națională de Știință și Tehnologie POLITEHNICA București
 Facultatea de Electronică, Telecomunicații și Tehnologia Informației
 Specializarea Rețele Software de Telecomunicații
 
-Coordonator științific: **Conf. dr. ing. Octavian Catrina**
 
 ---
 
