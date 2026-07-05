@@ -150,30 +150,6 @@ Lucrarea poate fi extinsă prin:
 
 ---
 
-## Structura recomandată a repository-ului
-
-```text
-.
-├── README.md
-├── lucrare/
-│   └── Licenta_Fierea_Cosmin-Andrei.pdf
-├── prezentare/
-│   └── Prezentare_Licenta.pdf
-├── poster/
-│   └── Poster_Licenta.pdf
-├── cod-sursa/
-│   ├── MAKE-IKE-SIG-PKC-DHE-4M/
-│   ├── MAKE-IKE-MAC-PSK-DHE-4M/
-│   ├── MAKE-ESP-MAC-PSK-DHE-2M/
-│   └── atacuri-ILV/
-└── rezultate/
-    ├── teste-functionale/
-    ├── teste-performanta/
-    └── trace-uri-atacuri/
-```
-
----
-
 ## Autor
 
 **Fierea M.M. Cosmin-Andrei**
