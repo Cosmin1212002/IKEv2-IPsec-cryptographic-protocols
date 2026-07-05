@@ -1,4 +1,4 @@
-# Trace interpretat — Atac ILV asupra MAKE-MAC-DH-M4
+# Trace — Atac ILV asupra MAKE-MAC-DH-M4
 
 ## Test rulat
 
