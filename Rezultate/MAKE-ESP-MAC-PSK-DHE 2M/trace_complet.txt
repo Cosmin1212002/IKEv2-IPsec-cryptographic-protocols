@@ -1,0 +1,129 @@
+TestAke2P: TEST_2P_MAKE_ESP_MAC_PSK_DH_2M; prot MAKE_ESP_MAC_PSK_DH_2M
+>> Start key exchange (2 parties)
+[Party: ana] 1 sessions
+ Session[0]: sid 0F158E91D2E6CDD3 from ana to bob state START
+[KeyEx: ana] build InitMsg to bob, new state INIT_SENT
+[Comm] MsgHeader: { INIT_A from ana to bob sid 0F158E91D2E6CDD3 }
+INIT_A: 
+ eData[234]:
+   data[154]:
+  C0 D1 E2 28 BD DC 0E A8 E9 14 F4 9C 87 F5 58 42   ...(..........XB
+  50 34 BD 61 34 F2 E7 8B 23 F6 52 E1 41 8A 8C DA   P4.a4...#.R.A...
+  49 60 50 6D 23 EE 9D B0 9D A8 76 EE 56 6B D6 8E   I`Pm#.....v.Vk..
+  09 ED 9A 50 C9 D3 18 AA 77 BD 9B 3D 82 35 4A A8   ...P....w..=.5J.
+  7D D9 A0 CC C1 AE 74 21 E0 3F 86 B8 3B 08 06 DF   }.....t!.?..;...
+  A5 2D 39 85 FD 9C 53 40 CA 54 B7 97 09 91 A5 11   .-9...S@.T......
+  31 29 0B 5B AE 18 43 CA B9 C6 E1 3D 75 0F EC 41   1).[..C....=u..A
+  6D 6B E0 DA AE FE 42 49 5F 57 4A 33 F1 7E 9D 0F   mk....BI_WJ3.~..
+  64 53 BB 4A 9A 15 64 D6 4F F2 03 69 43 AA C9 9D   dS.J..d.O..iC...
+  FB 4F 31 61 12 11 39 27 6B 38                     .O1a..9'k8
+ IV[16]:
+  7E 3E B3 B9 E6 61 B1 73 D4 E1 2C 07 5F F3 DB 4B 
+ mac[64]:
+  C8 49 E7 46 3E 1E 19 A3 B2 6B 89 53 52 F2 07 9C 
+  F7 D8 D7 3B D6 84 1E B4 9F 9C 87 60 93 4E BE 3B 
+  6C AF 44 BD B6 DE A5 E4 55 2E CD E1 9B 8F 4C 44 
+  30 24 59 6F BB 2D 64 BE 6D DF C9 2D 0E 6E 86 EB 
+
+[Party: bob] 1 sessions
+ Session[0]: sid 0F158E91D2E6CDD3 from bob to ana state START
+[KeyEx: bob] recv InitMsg in state START
+[KeyEx: bob] build InitMsg to ana, new state INIT_SENT
+[Comm] MsgHeader: { INIT_B from bob to ana sid 0F158E91D2E6CDD3 }
+[KeyEx: bob] Responder: handshake done, state ESTABLISHED. Success
+INIT_B: 
+ eData[234]:
+   data[154]:
+  E4 C1 89 1A 6D 38 4B 6E 83 21 05 CC 14 C9 2D C3   ....m8Kn.!....-.
+  DC 4B 79 EF 0E 67 05 54 21 04 C6 0E 0B D3 20 CA   .Ky..g.T!..... .
+  55 BF B1 8F B6 52 5E 84 00 5B 0A C1 B4 F0 82 C9   U....R^..[......
+  A2 3B 80 FD 40 7B 6B 4B 93 70 5F 69 91 0F 78 A1   .;..@{kK.p_i..x.
+  63 9D 6F E8 48 4B A7 09 D2 75 E4 2F 51 D4 78 8F   c.o.HK...u./Q.x.
+  5C 45 5D 98 64 A0 CD 56 D2 52 CD B2 2A 94 33 58   \E].d..V.R..*.3X
+  28 D4 EF D7 68 DB E9 EE D2 BA BB 57 D3 6E 60 65   (...h......W.n`e
+  5E BF 04 33 AB D0 DC 36 35 B1 85 9D A9 5B 84 75   ^..3...65....[.u
+  D0 EE BD 29 B6 79 0D 1B FE 5A DA F8 53 1C 2D F4   ...).y...Z..S.-.
+  08 F1 73 F7 D1 EA 22 9C 9D 4B                     ..s..."..K
+ IV[16]:
+  5D A2 14 3B A8 1E 41 41 42 E4 26 80 46 DB 95 E1 
+ mac[64]:
+  BC D6 99 5A E4 16 94 2D 2A 7B C1 BC 0B FC 8A 68 
+  78 7C 18 F6 F7 A6 9D 41 DC E2 AE 27 4C 33 58 0C 
+  BF 1E A7 D9 E7 7C E5 45 2F 97 2E C0 E4 DF BC 43 
+  76 83 28 85 1E 23 3F 39 5F C9 53 3C 74 92 53 03 
+
+[KeyEx: ana] recv InitMsg in state INIT_SENT
+[KeyEx: ana] Initiator: handshake done, state ESTABLISHED. Success
+
+>> Current sessions
+[Party: ana] 1 sessions
+ Session[0]: sid 0F158E91D2E6CDD3 from ana to bob state ESTABLISHED
+[Party: bob] 1 sessions
+ Session[0]: sid 0F158E91D2E6CDD3 from bob to ana state ESTABLISHED
+
+>> Key exchange finished (success) <<
+>> System ready for communications <<
+Party[ana]: sends message to bob
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+[Comm] MsgHeader: { DATA from ana to bob sid 0F158E91D2E6CDD3 }
+AE_DATA[96]:
+  71 C7 66 28 3B 3A F1 A1 BF B0 26 5D 8C FB 31 8F   q.f(;:....&]..1.
+  56 00 0A 68 B6 80 FB AE E0 64 9B 0D 05 3B 46 72   V..h.....d...;Fr
+  2E 86 2D 7E E4 4A 32 D6 CA F2 59 47 E4 B9 94 86   ..-~.J2...YG....
+  D0 3D DD 29 13 90 24 9B 5E F6 68 C7 F1 37 7C 56   .=.)..$.^.h..7|V
+  D6 E9 75 88 B9 26 26 99 7E 7E B2 F7 FB 3F EA AF   ..u..&&.~~...?..
+  45 2D D6 3D 2B 57 F4 55 EF EA 68 96 B1 B0 E1 D8   E-.=+W.U..h.....
+ IV[16]:
+  66 24 13 60 7F AB 4E 6A E8 33 6A ED 49 57 95 A8   f$.`..Nj.3j.IW..
+ mac[64]:
+  6C AB 4F A8 11 15 E4 4C 82 2C C5 E3 8E 66 B9 FE   l.O....L.,...f..
+  9A 6F 81 E7 BC 43 59 5D 3A FD 12 0A 62 A6 FB 68   .o...CY]:...b..h
+  F3 9E 55 41 A6 14 21 53 5C 67 0F F5 4F 48 2D DF   ..UA..!S\g..OH-.
+  6D 20 E6 7D BE 51 B4 AB F5 15 28 0B 03 9D 45 17   m .}.Q....(...E.
+
+Party[bob]: rcvd message from ana (ana). Accepted
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+Party[bob]: sends message to ana
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+[Comm] MsgHeader: { DATA from bob to ana sid 0F158E91D2E6CDD3 }
+AE_DATA[96]:
+  FF 26 26 B2 2A 49 D4 63 CB B5 A7 77 E4 67 A6 78   .&&.*I.c...w.g.x
+  E8 8A 80 FC F2 10 43 49 18 FF 42 EE 65 DA E4 16   ......CI..B.e...
+  CC 82 1B 35 DE 5F F1 0F 46 DE F5 1D FE 66 75 7D   ...5._..F....fu}
+  6D 9F 0F 20 C4 9A 0E C8 EE 6A 17 EE 39 24 6A C9   m.. .....j..9$j.
+  8E 0B FA 88 1D 77 6F 2F 68 D7 F7 67 F3 E2 40 86   .....wo/h..g..@.
+  A0 4C BA F6 2A 38 64 E2 39 C5 E9 81 84 28 6B 1F   .L..*8d.9....(k.
+ IV[16]:
+  EA 36 A8 99 4B 5A A7 5F F3 A3 18 D9 82 78 22 D5   .6..KZ._.....x".
+ mac[64]:
+  FA 48 C6 90 6D 29 D7 50 DA A0 07 CF FA B7 FA 66   .H..m).P.......f
+  82 00 79 3D BB EF DF 40 AD 85 5B DF 1B 6D A4 71   ..y=...@..[..m.q
+  D9 DC C8 AF 47 E2 26 FD 8D F0 B3 AD 2B A1 C0 4E   ....G.&.....+..N
+  90 F0 30 F4 2B DA 8D BC 67 99 41 8B FC B8 84 61   ..0.+...g.A....a
+
+Party[ana]: rcvd message from bob (bob). Accepted
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+
+>> Test ended: success <<
+[AppMsgThread:  bob] Terminated
+[AppMsgThread:  ana] Terminated
