@@ -1,0 +1,225 @@
+Crypto options for test TEST_2P_MAKE_SIG_DH_M4_ILV
+[0] ECDH_ECDSA_256_CTR_128
+[1] ECDH_ECDSA_384_CTR_192
+[2] ECDH_ECDSA_521_CTR_256
+[3] XDH_EdDSA_256_CTR_128
+[4] DH_RSA_2048_CTR_128
+[5] DH_RSA_3072_CTR_128
+[6] DH_8192_RSA_7680_CTR_192
+[7] DH_DSA_2048_CTR_128
+[8] DH_DSA_3072_CTR_128
+
+Enter crypto configuration index [0]: 0
+
+Test goals:
+[0] Trace protocol
+[1] Trace protocol more
+[2] Measure time
+
+Enter test goal [0]: 0
+
+TestAke2P: TEST_2P_MAKE_SIG_DH_M4_ILV; prot MAKE_SIG_DH_M4_ILV
+>> Start key exchange (2 parties)
+[Party: ana] 1 sessions
+ Session[0]: sid 836040A43F29298D from ana to bob state START
+[KeyEx: ana] build InitMsg to bob, new state INIT_SENT
+[Comm] MsgHeader: { INIT_A from ana to bob sid 836040A43F29298D }
+INIT_A: 
+ nonce[32]:
+  8A E2 BC FB C1 E2 E8 FD 24 5C 98 CB 07 98 77 9D   ........$\....w.
+  1F F1 6D D1 88 45 26 40 97 73 35 80 66 30 3D 24   ..m..E&@.s5.f0=$
+ dhPubKey[91]:
+  30 59 30 13 06 07 2A 86 48 CE 3D 02 01 06 08 2A   0Y0...*.H.=....*
+  86 48 CE 3D 03 01 07 03 42 00 04 13 0E D4 D7 DA   .H.=....B.......
+  96 48 5D FF 57 B4 C9 E3 F7 21 79 89 B6 A4 FD 71   .H].W....!y....q
+  3D 18 5F F6 F0 9D DB 93 E6 72 37 B7 E8 10 91 F7   =._......r7.....
+  63 39 4C A7 57 65 CB 48 50 89 03 B2 E6 27 80 6E   c9L.We.HP....'.n
+  B9 E4 6D EC 4D 65 87 D2 79 CE A5                  ..m.Me..y..
+
+[Party: bob] 1 sessions
+ Session[0]: sid 836040A43F29298D from bob to ana state START
+[KeyEx: bob] recv InitMsg in state START
+[KeyEx: bob] build InitMsg to ana, new state INIT_RCVD
+[Comm] MsgHeader: { INIT_B from bob to ana sid 836040A43F29298D }
+INIT_B: 
+ nonce[32]:
+  63 C6 FA 36 A4 B9 6B B8 3E 9F AD 93 BB 96 5D 56   c..6..k.>.....]V
+  C9 F4 D0 E1 AA 1E 71 49 19 6C E8 E8 83 CC CF DD   ......qI.l......
+ dhPubKey[91]:
+  30 59 30 13 06 07 2A 86 48 CE 3D 02 01 06 08 2A   0Y0...*.H.=....*
+  86 48 CE 3D 03 01 07 03 42 00 04 97 90 42 C1 51   .H.=....B....B.Q
+  58 FE C7 D9 33 DB 66 F3 F8 AE 24 E5 BD DE 06 95   X...3.f...$.....
+  5D 98 90 69 8A 58 B8 5C A0 3B 2E C2 91 F4 9C 47   ]..i.X.\.;.....G
+  65 F3 7B 0F D1 84 7A E5 79 14 E3 5A 0C 82 D5 45   e.{...z.y..Z...E
+  96 0F 75 DD BC EE 97 E1 F8 50 A8                  ..u......P.
+
+[KeyEx: ana] recv InitMsg in state INIT_SENT
+[KeyEx: ana] build AuthMsg to bob, new state AUTH_SENT
+[Comm] MsgHeader: { AUTH_A from ana to bob sid 836040A43F29298D }
+AUTH_A: 
+ auth[71]:
+  30 45 02 21 00 F9 DE 00 02 44 F7 14 41 9A E3 BE   0E.!.....D..A...
+  38 41 B2 3A 74 4E 3A 6E 36 2B 91 E4 E1 23 44 80   8A.:tN:n6+...#D.
+  57 D1 7C D2 AA 02 20 08 24 E5 C9 2B A6 49 6B AC   W.|... .$..+.Ik.
+  27 3A CE 38 60 CC 24 6E 1A B4 72 18 2A 50 C3 48   ':.8`.$n..r.*P.H
+  72 7D 19 6A BD 21 3E                              r}.j.!>
+ cert[552]:
+  30 82 02 24 30 82 01 CA A0 03 02 01 02 02 09 00   0..$0...........
+  F1 D1 93 4A B9 CC 51 28 30 0A 06 08 2A 86 48 CE   ...J..Q(0...*.H.
+  3D 04 03 02 30 76 31 0B 30 09 06 03 55 04 06 13   =...0v1.0...U...
+  02 52 4F 31 12 30 10 06 03 55 04 08 0C 09 42 75   .RO1.0...U....Bu
+  63 68 61 72 65 73 74 31 12 30 10 06 03 55 04 07   charest1.0...U..
+  0C 09 42 75 63 68 61 72 65 73 74 31 10 30 0E 06   ..Bucharest1.0..
+  03 55 04 0A 0C 07 4F 43 20 4C 61 62 73 31 10 30   .U....OC Labs1.0
+  0E 06 03 55 04 0B 0C 07 4F 43 4C 20 50 4B 49 31   ...U....OCL PKI1
+  1B 30 19 06 03 55 04 03 0C 12 43 41 20 52 6F 6F   .0...U....CA Roo
+  74 20 45 43 44 53 41 20 50 32 35 36 30 1E 17 0D   t ECDSA P2560...
+  32 32 30 32 30 36 31 36 31 33 32 35 5A 17 0D 33   220206161325Z..3
+  31 31 32 31 36 31 36 31 33 32 35 5A 30 68 31 0B   11216161325Z0h1.
+  30 09 06 03 55 04 06 13 02 52 4F 31 12 30 10 06   0...U....RO1.0..
+  03 55 04 08 0C 09 42 75 63 68 61 72 65 73 74 31   .U....Bucharest1
+  12 30 10 06 03 55 04 07 0C 09 42 75 63 68 61 72   .0...U....Buchar
+  65 73 74 31 10 30 0E 06 03 55 04 0A 0C 07 53 52   est1.0...U....SR
+  53 20 4C 61 62 31 11 30 0F 06 03 55 04 0B 0C 08   S Lab1.0...U....
+  53 52 53 20 55 73 65 72 31 0C 30 0A 06 03 55 04   SRS User1.0...U.
+  03 0C 03 61 6E 61 30 59 30 13 06 07 2A 86 48 CE   ...ana0Y0...*.H.
+  3D 02 01 06 08 2A 86 48 CE 3D 03 01 07 03 42 00   =....*.H.=....B.
+  04 86 9E 16 38 A7 85 A8 5C 35 FA 24 C5 79 86 6D   ....8...\5.$.y.m
+  DA FA 33 C3 49 42 E4 A5 65 CE B5 78 C5 13 39 7A   ..3.IB..e..x..9z
+  6F 89 F9 25 FD 15 11 BC B8 63 62 E2 B7 08 AA 73   o..%.....cb....s
+  D9 BD BB 3B 94 8A 7C 19 B5 53 5B FF 69 44 B1 88   ...;..|..S[.iD..
+  24 A3 4F 30 4D 30 1D 06 03 55 1D 0E 04 16 04 14   $.O0M0...U......
+  88 FB 5D EB 1A D8 F6 43 DF 3E AE 78 F6 5E C8 23   ..]....C.>.x.^.#
+  6D 7D CE 73 30 0B 06 03 55 1D 0F 04 04 03 02 03   m}.s0...U.......
+  88 30 1F 06 03 55 1D 23 04 18 30 16 80 14 6C 23   .0...U.#..0...l#
+  A1 FA 0B FD 30 F9 52 48 E9 2C 17 06 D4 6D 60 21   ....0.RH.,...m`!
+  3E 07 30 0A 06 08 2A 86 48 CE 3D 04 03 02 03 48   >.0...*.H.=....H
+  00 30 45 02 21 00 C2 5D 22 0C 79 05 B3 4B DF 84   .0E.!..]".y..K..
+  3F 68 00 C2 C3 87 13 22 43 1C 06 25 DB 71 0F 0F   ?h....."C..%.q..
+  8F AA 63 94 2E 31 02 20 3E C0 EE AA 8F 53 06 06   ..c..1. >....S..
+  15 39 FF 95 8B E3 4A D7 54 93 62 35 44 3C 81 B1   .9....J.T.b5D<..
+  C0 E7 CA ED C0 F7 FB 8D                           ........
+
+[KeyEx: bob] recvAuth in state INIT_RCVD
+[KeyEx: bob] Successful verification of ana's authenticator (SIG-PKC-DHE-ILV)
+  Successful authentication: remote user is ana
+[KeyEx: bob] build AuthMsg to ana, new state INIT_RCVD
+[Comm] MsgHeader: { AUTH_B from bob to ana sid 836040A43F29298D }
+[KeyEx: bob] Responder: Auth handshake done, state ESTABLISHED. Success
+AUTH_B: 
+ auth[70]:
+  30 44 02 20 02 26 47 46 B7 E8 77 34 A6 92 8A 5E   0D. .&GF..w4...^
+  34 8E 73 35 D0 DE A9 43 69 2E 13 7B 6C FC FD BA   4.s5...Ci..{l...
+  1C 7C 7F 0A 02 20 08 AF D2 58 D8 B3 12 B4 13 60   .|... ...X.....`
+  74 79 9A 69 5E 1E 18 44 62 3B C8 4D 10 22 D2 44   ty.i^..Db;.M.".D
+  0D B8 86 73 1D 66                                 ...s.f
+ cert[552]:
+  30 82 02 24 30 82 01 CA A0 03 02 01 02 02 09 00   0..$0...........
+  98 FB A7 3D A6 D9 67 12 30 0A 06 08 2A 86 48 CE   ...=..g.0...*.H.
+  3D 04 03 02 30 76 31 0B 30 09 06 03 55 04 06 13   =...0v1.0...U...
+  02 52 4F 31 12 30 10 06 03 55 04 08 0C 09 42 75   .RO1.0...U....Bu
+  63 68 61 72 65 73 74 31 12 30 10 06 03 55 04 07   charest1.0...U..
+  0C 09 42 75 63 68 61 72 65 73 74 31 10 30 0E 06   ..Bucharest1.0..
+  03 55 04 0A 0C 07 4F 43 20 4C 61 62 73 31 10 30   .U....OC Labs1.0
+  0E 06 03 55 04 0B 0C 07 4F 43 4C 20 50 4B 49 31   ...U....OCL PKI1
+  1B 30 19 06 03 55 04 03 0C 12 43 41 20 52 6F 6F   .0...U....CA Roo
+  74 20 45 43 44 53 41 20 50 32 35 36 30 1E 17 0D   t ECDSA P2560...
+  32 32 30 32 30 36 31 36 31 32 34 34 5A 17 0D 33   220206161244Z..3
+  31 31 32 31 36 31 36 31 32 34 34 5A 30 68 31 0B   11216161244Z0h1.
+  30 09 06 03 55 04 06 13 02 52 4F 31 12 30 10 06   0...U....RO1.0..
+  03 55 04 08 0C 09 42 75 63 68 61 72 65 73 74 31   .U....Bucharest1
+  12 30 10 06 03 55 04 07 0C 09 42 75 63 68 61 72   .0...U....Buchar
+  65 73 74 31 10 30 0E 06 03 55 04 0A 0C 07 53 52   est1.0...U....SR
+  53 20 4C 61 62 31 11 30 0F 06 03 55 04 0B 0C 08   S Lab1.0...U....
+  53 52 53 20 55 73 65 72 31 0C 30 0A 06 03 55 04   SRS User1.0...U.
+  03 0C 03 62 6F 62 30 59 30 13 06 07 2A 86 48 CE   ...bob0Y0...*.H.
+  3D 02 01 06 08 2A 86 48 CE 3D 03 01 07 03 42 00   =....*.H.=....B.
+  04 0F C2 6D 55 47 63 E7 07 B0 EA 2A 0B C8 08 EF   ...mUGc....*....
+  09 E2 38 8A B0 E3 0B BC 14 F3 9C 16 70 74 0F 81   ..8.........pt..
+  5E 2D DB DA B3 FD BA F0 B7 29 3F 29 69 8D DA 8D   ^-.......)?)i...
+  43 4C 79 E9 9A 36 56 C2 5E 3E 84 33 E8 5F 06 BB   CLy..6V.^>.3._..
+  26 A3 4F 30 4D 30 1D 06 03 55 1D 0E 04 16 04 14   &.O0M0...U......
+  31 E6 53 95 B7 28 C1 69 A3 67 34 2D 81 FF 5C F9   1.S..(.i.g4-..\.
+  EE DA 7C C6 30 0B 06 03 55 1D 0F 04 04 03 02 03   ..|.0...U.......
+  88 30 1F 06 03 55 1D 23 04 18 30 16 80 14 6C 23   .0...U.#..0...l#
+  A1 FA 0B FD 30 F9 52 48 E9 2C 17 06 D4 6D 60 21   ....0.RH.,...m`!
+  3E 07 30 0A 06 08 2A 86 48 CE 3D 04 03 02 03 48   >.0...*.H.=....H
+  00 30 45 02 20 05 51 1E E3 F0 63 8A 20 A2 D3 A8   .0E. .Q...c. ...
+  BD B8 4E AF D0 C1 31 82 F9 1F FE 6D C5 E0 5B 84   ..N...1....m..[.
+  54 A3 60 1E B7 02 21 00 E1 6B EB F8 7D 70 0D 2B   T.`...!..k..}p.+
+  96 06 16 A5 A0 1D 0D 4A F1 1B 79 DC 12 DD 06 83   .......J..y.....
+  45 72 83 65 46 58 C5 F6                           Er.eFX..
+
+[KeyEx: ana] recvAuth in state AUTH_SENT
+[KeyEx: ana] Successful verification of bob's authenticator (SIG-PKC-DHE-ILV)
+  Successful authentication: remote user is bob
+[KeyEx: ana] Initiator: Auth handshake done, state ESTABLISHED. Success
+
+>> Current sessions
+[Party: ana] 1 sessions
+ Session[0]: sid 836040A43F29298D from ana to bob state ESTABLISHED
+[Party: bob] 1 sessions
+ Session[0]: sid 836040A43F29298D from bob to ana state ESTABLISHED
+
+>> Key exchange finished (success) <<
+>> System ready for communications <<
+Party[ana]: sends message to bob
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+[Comm] MsgHeader: { DATA from ana to bob sid 836040A43F29298D }
+AE_DATA[96]:
+  EF F7 82 8C D1 D5 0B E2 50 A5 58 7D 06 F9 08 1B   ........P.X}....
+  A9 EA 28 3F 26 72 CB 41 01 B6 F1 D5 5F B4 7A 81   ..(?&r.A...._.z.
+  EC E5 92 15 56 AF 84 30 0E 9E 5F CA 83 75 EC E4   ....V..0.._..u..
+  84 AE 9D 5D 52 AE 46 6C 32 8C 8F 5A 7D F9 C6 82   ...]R.Fl2..Z}...
+  F4 47 61 D1 EA 88 7B 2F C4 D8 8D 5B 3A 3D F6 F4   .Ga...{/...[:=..
+  E1 4D 2E 82 BC 49 C5 CE B7 46 6B B9 A6 61 BE 5A   .M...I...Fk..a.Z
+ IV[16]:
+  73 EB 89 F9 4A 3F 77 C1 C6 65 3E BD FD 1C 09 43   s...J?w..e>....C
+ mac[32]:
+  18 CB 78 F8 25 DA 16 0F 8A FA DB D5 6C E3 6C F4   ..x.%.......l.l.
+  1D EC A3 AE 1C 16 D8 6F 8C 3F 4F 80 C8 BD E0 47   .......o.?O....G
+
+Party[bob]: rcvd message from ana (ana). Accepted
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+Party[bob]: sends message to ana
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+[Comm] MsgHeader: { DATA from bob to ana sid 836040A43F29298D }
+AE_DATA[96]:
+  92 FD 69 B0 4D E9 FE 56 E7 74 32 A3 1B 06 02 98   ..i.M..V.t2.....
+  27 49 2C F9 65 A8 38 64 44 D8 37 13 4F 25 1D 9E   'I,.e.8dD.7.O%..
+  2F 82 5A 17 8D 26 F5 89 C7 B2 16 F4 EF D9 4C A5   /.Z..&........L.
+  72 A2 23 C4 07 81 A1 05 F5 37 7F 4C 65 65 13 17   r.#......7.Lee..
+  E3 F0 5E CC 64 DC EA 4F 16 17 F5 19 1D C9 FF E6   ..^.d..O........
+  84 F7 86 CD B5 7D B9 74 45 23 B5 B5 F0 46 AD 67   .....}.tE#...F.g
+ IV[16]:
+  10 59 49 D2 79 35 EF E1 78 64 EB 91 1C 61 00 DB   .YI.y5..xd...a..
+ mac[32]:
+  0D C5 A4 BD 23 38 9F 85 F7 35 5D A4 99 4E 67 E3   ....#8...5]..Ng.
+  12 88 E5 BE 99 47 1E C0 14 31 47 C0 EE FB 31 2D   .....G...1G...1-
+
+Party[ana]: rcvd message from bob (bob). Accepted
+  45 63 68 6F 20 68 61 6E 64 73 68 61 6B 65 20 28   Echo handshake (
+  66 72 6F 6D 20 61 6E 61 20 74 6F 20 62 6F 62 29   from ana to bob)
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+  30 31 32 33 34 35 36 37 30 31 32 33 34 35 36 37   0123456701234567
+
+>> Test ended: success <<
+[AppMsgThread:  bob] Terminated
+[AppMsgThread:  ana] Terminated
