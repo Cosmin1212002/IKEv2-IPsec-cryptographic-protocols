@@ -7,7 +7,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import comm.AppComm;
-import crypto.AutSec;
+import crypto.AutEnc;
 import crypto.GenSessionKeyBytes;
 import crypto.KeyAgrDH;
 import crypto.KeyManagerKS;
@@ -18,57 +18,53 @@ import secpro.CryptoConfig;
 import secpro.OwnCrypto;
 import secpro.SecProBase;
 import secpro.SetupPSK;
-import secpro.msg.AuthData;
 import secpro.msg.AuthMsg;
 import secpro.msg.InitAuthMsg;
 import secpro.msg.InitMsg;
 import secpro.msg.MsgType;
-import tests.TestConst;
 
 /**
- * MA-KE-MAC-IKE: variant with 4 messages.
- * Protocol with mutual authentication using MAC and PSK;
- * key exchange using ephemeral Diffie-Hellman.
+ * MAKE-ESP-MAC-PSK-DHE: 2-message protocol.
  *
+ * Protocol used after an IKE SA was already established.
+ * Peers are already authenticated and use an existing PSK only to
+ * protect the new keying material with authenticated encryption.
  *
+ * The AE-protected payload is carried in InitMsg.eData.
  *
  */
-public class MAkeMacIKE extends SecProBase
+public class MAkeMacESP extends SecProBase
 {
     // Diffie-Hellman
     private KeyPair locDHKeyPair;
     private byte[] remDHPubBytes;
     // AKE protocol
-    private int nonceLen = 256;
+    private final int nonceLen = 256;
     private byte[] locNonce;
     private byte[] remNonce;
-    // Session keys for MAC(locId) / MAC(remId)
-    private SecretKey locKeyAuth;
-    private SecretKey remKeyAuth;
     // Algorithm negotiation (simulated)
     private String locAlg;
     private String remAlg;
-    //Data(msg)
-    private byte[] locData;
+    // AE protected with a key derived from the PSK
+    private AutEnc aeWithPsk;
 
-    public MAkeMacIKE(AppComm appComm, String locId, byte[] sessionId,
+    public MAkeMacESP(AppComm appComm, String locId, byte[] sessionId,
             CryptoConfig commonCrypto, OwnCrypto ownCrypto) throws Exception
     {
         super(appComm, locId, sessionId, commonCrypto, ownCrypto);
         locAlg = commonCrypto.toString();
         remAlg = null;
-        locData = null;
     }
 
     /**
-     * Initiator starts handshakes.
+     * Initiator starts the 2-message exchange.
      */
     public void doKeyExch(String locId, String remId) throws Exception
     {
         if (state == AkeState.START) {
             this.remId = remId;
             initiator = true;
-            locData = TestConst.msg10.getBytes();
+            initAeWithPsk();
             generateNonceAndDHKeys();
             state = AkeState.INIT_SENT;
             appComm.sendInitMsg(buildInitMsg());
@@ -76,282 +72,176 @@ public class MAkeMacIKE extends SecProBase
     }
 
     /**
-     * Builds InitMsg containing the sender's nonce and DH public key.
-     * Variant with 4 messages: InitMsgA, InitMsgB, AuthMsgA, AuthMsgB.
+     * Initializes AE with key material derived from the PSK.
+     * a single PSK-derived AE key set is used in both directions.
+     */
+    private void initAeWithPsk() throws Exception
+    {
+        SecretKey psk = getEspPsk();
+        String macName = commonCrypto.getAutSecName();
+        String encName = commonCrypto.getEncSecName();
+        int keyLen = commonCrypto.getSecKeyLen() / 8;
+        boolean isGCM = encName.split("/")[1].equals("GCM");
+        // Symmetric seed so both peers derive the same AE key set
+        String id1 = (locId.compareTo(remId) <= 0) ? locId : remId;
+        String id2 = (locId.compareTo(remId) <= 0) ? remId : locId;
+        byte[] seed = Utils.concatenate(
+                id1.getBytes(),
+                id2.getBytes());
+        GenSessionKeyBytes genKeyBytes = new GenSessionKeyBytes(macName);
+        SecretKey kdk = genKeyBytes.extract(psk.getEncoded(), seed);
+        int numKeyBytes = isGCM ? keyLen : 2 * keyLen;
+        byte[] derivedBytes = genKeyBytes.expand(kdk, seed, numKeyBytes);
+        String encAlgName = encName.split("/")[0];
+        aeWithPsk = new AutEnc(encName, macName);
+        aeWithPsk.setKeyEnc(new SecretKeySpec(derivedBytes, 0, keyLen, encAlgName));
+        if (!isGCM) {
+            aeWithPsk.setKeyMac(new SecretKeySpec(derivedBytes, keyLen, keyLen, macName));
+        }
+    }
+
+    /**
+     * Gets the PSK used for AE protection of INIT messages.
+     * Stored under alias remId + "_ake" in the local key store.
+     */
+    private SecretKey getEspPsk() throws Exception
+    {
+        String ksFile = "keys/skeys/" + locId + ".pkcs12";
+        KeyManagerKS ks = new KeyManagerKS(ksFile, SetupPSK.KS_PWD);
+        ks.loadKeyStore();
+        return ks.getSecretKey(remId + "_ake");
+    }
+
+    /**
+     * Builds INIT_A / INIT_B carrying:
+     *   eData = AE(alg | nonce | dhKey)
      */
     protected InitMsg buildInitMsg() throws Exception
     {
         Utils.trace("[KeyEx: " + locId + "] build InitMsg to " + remId + ", new state " + state);
-        // InitMsg contains alg, local nonce, local ephemeral DH public key,
-        
+        byte[] dhPubBytes = locDHKeyPair.getPublic().getEncoded();
+        byte[] payload = encodeInitData(locAlg, locNonce, dhPubBytes);
+        ProtectedData encData = aeWithPsk.encrypt(payload);
         MsgType type = isInitiator() ? MsgType.INIT_A : MsgType.INIT_B;
         return new InitMsg(
                 type,
                 locId,
                 remId,
                 sessionId,
-                locNonce,
-                locDHKeyPair.getPublic().getEncoded(),
                 null,
-                locAlg.getBytes());
-    }
-
-    /**
-     * Builds AuthMsg containing the sender's authenticator.
-     * Variant with 4 messages: InitMsgA, InitMsgB, AuthMsgA, AuthMsgB.
-     *
-     * The authenticator and data are packed in AuthData and then
-     * protected with authenticated encryption.
-     */
-    protected AuthMsg buildAuthMsg() throws Exception
-    {
-        Utils.trace("[KeyEx: " + locId + "] build AuthMsg to " + remId + ", new state " + state);
-        // Compute own authenticator
-        byte[] mac = generateAuth();
-        // DataBA (responder)
-        if (!isInitiator() && locData == null) {
-            locData = TestConst.msg11.getBytes();
-        }
-        AuthData authData = new AuthData(null, mac, locData);
-        ProtectedData encAuthData = autEncSend.encrypt(authData.encode());
-        MsgType type = isInitiator() ? MsgType.AUTH_A : MsgType.AUTH_B;
-        return new AuthMsg(type, locId, remId, sessionId, null, null, encAuthData);
-    }
-
-    /**
-     * Gets the PSK used for the main authenticator.
-     *
-     * The PSK is stored in the symmetric key store associated with the
-     * local party, under alias remId + "_ake".
-     */
-    private SecretKey getAuthPsk() throws Exception
-    {
-        //String ksFile = "keys/skeys/" + locId + ".pkcs12";
-        //KeyManagerKS ks = new KeyManagerKS(ksFile, SetupPSK.KS_PWD);
-        //ks.loadKeyStore();
-        //return ks.getSecretKey(remId + "_ake");
-       SecretKey kauKey = ownCrypto.getKeyManager().getSecretKey(remId + "_ake");
-       return kauKey;
-    }
-
-    /**
-     * Generates the local authenticator.
-     *
-     * The authenticator is a MAC with the pre-shared key over:
-     *   alg | locNonce | locDHPubKey | remNonce | MAC(locId)
-     *
-     * The internal MAC(locId) is computed with a session key derived from
-     * the DH shared secret and provides additional key confirmation.
-     */
-    protected byte[] generateAuth() throws Exception
-    {
-        // Compute MAC(locId) with the local authentication session key
-        AutSec authSecId = new AutSec(commonCrypto.getAutSecName());
-        authSecId.setKey(locKeyAuth);
-        byte[] macId = authSecId.genMac(locId.getBytes());
-        // Main MAC authenticator with PSK
-        AutSec authSec = new AutSec(commonCrypto.getAutSecName());
-        SecretKey kauKey = getAuthPsk();
-        authSec.setKey(kauKey);
-        // Build the authenticated transcript:
-        // alg | nonce | DH | nonce | MAC
-        byte[] data = Utils.concatenate(locAlg.getBytes(), locNonce);
-        data = Utils.concatenate(data, locDHKeyPair.getPublic().getEncoded());
-        data = Utils.concatenate(data, remNonce, macId);
-        return authSec.genMac(data);
-    }
-
-    /**
-     * Verifies the received authenticator.
-     *
-     * Reconstructs the authenticated transcript:
-     *   remAlg | remNonce | remDHPubKey | locNonce | MAC(remId)
-     * and verifies the received MAC using the shared PSK.
-     */
-    protected boolean verifyAuth(byte[] auth) throws Exception
-    {
-        // Recompute MAC(remId) with the remote authentication session key
-        AutSec authSecId = new AutSec(commonCrypto.getAutSecName());
-        authSecId.setKey(remKeyAuth);
-        byte[] remIdMac = authSecId.genMac(remId.getBytes());
-        // Main MAC authenticator with PSK
-        AutSec authSec = new AutSec(commonCrypto.getAutSecName());
-        SecretKey kauKey = getAuthPsk();
-        authSec.setKey(kauKey);
-        byte[] data = Utils.concatenate(remAlg.getBytes(), remNonce);
-        data = Utils.concatenate(data, remDHPubBytes);
-        data = Utils.concatenate(data, locNonce, remIdMac);
-
-        return authSec.verMac(data, auth);
+                null,
+                null,
+                null,
+                encData
+        );
     }
 
     /**
      * Processes received InitMsg.
-     * Variant in 4 messages: InitMsgA, InitMsgB, AuthMsgA, AuthMsgB.
-     * Different order of operations: optimistic/faster, pessimistic/slower.
      */
     public byte[] recvInitMsg(InitMsg msg) throws Exception
     {
         Utils.trace("[KeyEx: " + locId + "] recv InitMsg in state " + state);
         switch (state) {
         case START:
-            // Responder receives InitReqMsg
-            // Store remote identity, nonce, DH public key and algorithm
+            // Responder receives INIT_A
             remId = msg.getSrc();
-            remNonce = msg.getNonce();
-            remDHPubBytes = msg.getDHKey();
-            remAlg = (msg.getAlg() == null)
-                    ? null
-                    : new String(msg.getAlg());
-
-            if (remAlg == null || !remAlg.equals(locAlg)) {
-                sendFailMsg(remId, "Algorithm mismatch");
+            initiator = false;
+            initAeWithPsk();
+            if (!verifyAndExtract(msg)) {
+                sendFailMsg(remId, "[KeyEx: " + locId + "] AE verification failed on InitMsg");
                 return null;
             }
-            // DataBA
-            locData = TestConst.msg11.getBytes();
             generateNonceAndDHKeys();
-            // Update state and send InitRspMsg
-            state = AkeState.INIT_RCVD;
-            appComm.sendInitMsg(buildInitMsg());
-            // Variant: Before verifyAuth, faster
             genSessionKeys();
+            // Reuse generic INIT_SENT state before sending INIT_B
+            state = AkeState.INIT_SENT;
+            appComm.sendInitMsg(buildInitMsg());
+            state = AkeState.ESTABLISHED;
+            success = true;
+            Utils.trace("[KeyEx: " + locId + "] Responder: handshake done, state "
+                    + state + ". Success");
+            notifyTerminate();
             break;
         case INIT_SENT:
-            // Initiator receives InitRspMsg
-            // Reject if response source does not match expected peer
+            // Initiator receives INIT_B
             if (!msg.getSrc().equals(remId)) {
-                sendFailMsg(msg.getSrc(), "[KeyEx: " + locId + "] Illegal peer");
+                sendFailMsg(msg.getSrc(), "[KeyEx: " + locId + "] Illegal peer in state INIT_SENT");
                 return null;
             }
-            // Store remote nonce, DH public key and algorithm
-            remNonce = msg.getNonce();
-            remDHPubBytes = msg.getDHKey();
-            remAlg = (msg.getAlg() == null)
-                    ? null
-                    : new String(msg.getAlg());
-
-            if (remAlg == null || !remAlg.equals(locAlg)) {
-                sendFailMsg(remId, "Algorithm mismatch");
+            if (!verifyAndExtract(msg)) {
+                sendFailMsg(remId, "[KeyEx: " + locId + "] AE verification failed on InitMsg");
                 return null;
             }
-            // Variant: Before verifyAuth, faster
             genSessionKeys();
-            // Update state and send AuthReqMsg
-            state = AkeState.AUTH_SENT;// InitMsg sent and received, AuthMsg sent
-            appComm.sendAuthMsg(buildAuthMsg());
+            state = AkeState.ESTABLISHED;
+            success = true;
+            Utils.trace("[KeyEx: " + locId + "] Initiator: handshake done, state "
+                    + state + ". Success");
+            notifyTerminate();
             break;
         case ESTABLISHED: // terminated + success
-            break; //ignore (abort?)
+            break;//ignore (abort?)
         case FAILED: // terminated + fail
-            break;// ignore
+            break; // ignore
         default:
-            // abort: send FailMsg and terminate + fail
+        	// abort: send FailMsg and terminate + fail
             sendFailMsg(remId, "[KeyEx: " + locId + "] Illegal state " + state); // -> state=FAILED
         }
         return null;
     }
 
     /**
-     * Processes received AuthMsg.
-     * Variant in 4 messages: InitMsgA, InitMsgB, AuthMsgA, AuthMsgB.
-     * Different order of operations: optimistic/faster, pessimistic/slower.
+     * Decrypts and verifies the AE-protected init payload and extracts:
+     *   remAlg, remNonce, remDHPubBytes
+     * Checks remAlg == locAlg.
      */
-    public byte[] recvAuthMsg(AuthMsg msg) throws Exception
+    private boolean verifyAndExtract(InitMsg msg)
     {
-        Utils.trace("[KeyEx: " + locId + "] recvAuth in state " + state);
-        // Reject if message source does not match the expected peer
-        if (!remId.equals(msg.getSrc())) {
-            sendFailMsg(msg.getSrc(), "[KeyEx: " + locId + "] Illegal state");
-            return null;
+        ProtectedData eData = msg.getEData();
+        if (eData == null) {
+            return false;
         }
-        byte[] ptxt = null; // AuthMsg with early data
-        // sw.start();
-        switch (state) {
-        case INIT_RCVD: // responder
-            try {
-            	// sw.printDeltaTime("Responder recvAuthMsg");
-                AuthData authData = new AuthData(autEncRecv.decrypt(msg.getEData()));
-                // Verify the received MAC authenticator
-                success = verifyAuth(authData.getAuth());
-                if (success) {
-                    Utils.trace("[KeyEx: " + locId + "] Successful verification of " + remId
-                            + "'s authenticator (MAC)\n  Successful authentication: remote user is " + remId);
-                    // AuthMsg with early data
-					ptxt =  authData.getData();
-					Utils.trace("[KeyEx: "+locId+"] Received early data: " + new String(ptxt));
-                    // Variant: Send precomputed AuthRspMsg, faster
-                    appComm.sendAuthMsg(buildAuthMsg());
-                    state = AkeState.ESTABLISHED;
-                    // sw.printElapsedTime("Responder duration");
-                    Utils.trace("[KeyEx: " + locId + "] Responder: Auth handshake done, state " + state + ". Success");
-                    notifyTerminate();
-                }
-                else {
-                    // Reject. Terminate.
-                    Utils.trace("[KeyEx: " + locId + "] Failed authentication of " + remId);
-                    sendFailMsg(remId, "Responder: Key exchange failed");// -> state=FAILED
-                }
+        try {
+            byte[] plaintext = aeWithPsk.decrypt(eData);
+            if (plaintext == null || plaintext.length < 6) {
+                return false;
             }
-            catch (Exception e) {
-                System.out.println("[KeyEx: " + locId + "]: Responder (recv AuthMsg). Key exchange failed (exception)");
-                sendFailMsg(remId, "Responder: Key exchange failed");// -> state=FAILED
-                e.printStackTrace();
-            }
-            break;
+            decodeInitData(plaintext);
 
-        case AUTH_SENT: // initiator
-            try {
-            	// sw.printDeltaTime("Initiator recvAuthMsg");
-                AuthData authData = new AuthData(autEncRecv.decrypt(msg.getEData()));
-                // Verify the received MAC authenticator
-                success = verifyAuth(authData.getAuth());
-                if (success) {
-                    Utils.trace("[KeyEx: " + locId + "] Successful verification of " + remId
-                            + "'s authenticator (MAC)\n  Successful authentication: remote user is " + remId);
-                    state = AkeState.ESTABLISHED;// AuthMsg received and sent, success
-                    // sw.printElapsedTime("Initiator total duration");
-                    Utils.trace("[KeyEx: " + locId + "] Initiator: Auth handshake done, state " + state + ". Success");
-                    // AuthMsg with early data
-					ptxt =  authData.getData();
-					Utils.trace("[KeyEx: "+locId+"] Received early data: " + new String(ptxt));
-                    notifyTerminate();
-                }
-                else {
-                    // Reject. Terminate.
-                    Utils.trace("[KeyEx: " + locId + "] Failed authentication of " + remId);
-                    sendFailMsg(remId, "Initiator: Key exchange failed");// -> state=FAILED
-                }
+            if (remAlg == null || !remAlg.equals(locAlg)) {
+                Utils.trace("[KeyEx: " + locId + "] Algorithm mismatch: local=" + locAlg
+                        + ", remote=" + remAlg);
+                return false;
             }
-            catch (Exception e) {
-                System.out.println("[KeyEx: " + locId + "]: Initiator (recv AuthMsg). Key exchange failed (exception)");
-                sendFailMsg(remId, "Initiator: Key exchange failed");// -> state=FAILED
-                e.printStackTrace();
+            if (remNonce == null || remNonce.length != nonceLen / 8) {
+                return false;
             }
-            break;
-        case ESTABLISHED:// terminated + success
-            break;// ignore (abort?)
-        case FAILED:// terminated + fail
-            break;// ignore
-        default:
-            // abort: send FailMsg and terminate + fail
-            sendFailMsg(remId, "[KeyEx: " + locId + "] Illegal state " + state);
+            if (remDHPubBytes == null || remDHPubBytes.length == 0) {
+                return false;
+            }
+            return true;
         }
+        catch (Exception e) {
+            Utils.trace("[KeyEx: " + locId + "] AE verification failed: " + e.getMessage());
+            return false;
+        }
+    }
 
+    public byte[] recvInitAuthMsg(InitAuthMsg msg) throws Exception
+    {
+        sendFailMsg(remId, "[KeyEx: " + locId + "] Unexpected InitAuthMsg in state " + state);
         return null;
     }
 
-    /* Not used in 4-message variant */
-    public byte[] recvInitAuthMsg(InitAuthMsg msg) throws Exception
+    public byte[] recvAuthMsg(AuthMsg msg) throws Exception
     {
-        sendFailMsg(remId, "[KeyEx: " + locId + "] Illegal message " + state);
+        sendFailMsg(remId, "[KeyEx: " + locId + "] Unexpected AuthMsg in state " + state);
         return null;
     }
 
     /**
-     * Generates local protocol fresh values:
-     * - random local nonce
-     * - local ephemeral DH key pair
+     * Generates local nonce and ephemeral DH key pair.
      */
     private void generateNonceAndDHKeys() throws Exception
     {
@@ -363,49 +253,101 @@ public class MAkeMacIKE extends SecProBase
     }
 
     /**
-     * Generates session keys for authenticated-encryption (AE) in
-     * protocols that compute session keys using DH, nonces, and PRF.
-     * These protocols use the extract and expand method: extract a
-     * random secret from the DH secret and expand it when more random
-     * bytes are necessary (longer keys, more keys).
-     * The selected AE scheme determines the number of keys per data stream:
-     * one key for dedicated AE scheme (GCM) or two keys for Encrypt-then-MAC
-     * (EtM) generic construction with selected MAC and ENC-SEC schemes.
+     * Generates session keys for the new ESP SA using DH and nonces.
      *
-     * Different keys for each direction.
-     * Additional keys for MAC(locID) authenticator.
+     * K_S = PRF_N(g^xy), where N = N_A | N_B
+     * two keys per direction for EtM.
      */
     protected void genSessionKeys() throws Exception
     {
-        // One key per direction if AE with selected dedicated scheme (GCM)
-        // Two keys per direction if AE with EtM and selected ENC/MAC schemes
-        // Two additional keys for local/remote authenticator (MAC(id))
         int keyLen = commonCrypto.getSecKeyLen() / 8;
         boolean isGCM = commonCrypto.getEncSecName().split("/")[1].equals("GCM");
-        int randBytesLen = (isGCM ? 4 : 6) * keyLen;
+        int randBytesLen = (isGCM ? 2 : 4) * keyLen;
         String macName = commonCrypto.getAutSecName();
         // Compute DH shared secret
         String dhName = commonCrypto.getDhName();
         byte[] secretBytesDH = KeyAgrDH.genDHSecret(dhName, locDHKeyPair, remDHPubBytes);
-
         byte[] seed = initiator
                 ? Utils.concatenate(locNonce, remNonce)
                 : Utils.concatenate(remNonce, locNonce);
-        // The PRF for key derivation is the selected MAC scheme
+        // The PRF for key derivation
         GenSessionKeyBytes genKeyBytes = new GenSessionKeyBytes(macName);
-
         SecretKey kdk = genKeyBytes.extract(secretBytesDH, seed);
         byte[] randBytes = genKeyBytes.expand(kdk, seed, randBytesLen);
-        // Keys for local/remote authenticator and for data send/receive
-        byte[] authRandBytes = new byte[2 * keyLen];
-        byte[] dataRandBytes = new byte[randBytesLen - 2 * keyLen];
-        Utils.split(randBytes, authRandBytes, dataRandBytes);
-        byte[][] authKeyBytes = new byte[2][keyLen];
-        Utils.split(authRandBytes, authKeyBytes);
+        setSessionKeys(randBytes);
+    }
 
-        locKeyAuth = new SecretKeySpec(authKeyBytes[initiator ? 0 : 1], macName);
-        remKeyAuth = new SecretKeySpec(authKeyBytes[initiator ? 1 : 0], macName);
-        setSessionKeys(dataRandBytes);
-    } 
-    
+    /**
+     * Encodes: alg | nonce | dhKey
+     * as: [2B algLen][alg][2B nonceLen][nonce][2B dhLen][dhKey]
+     */
+    private byte[] encodeInitData(String alg, byte[] nonce, byte[] dhKey)
+    {
+        byte[] algBytes = (alg == null) ? null : alg.getBytes();
+
+        int algLen = (algBytes == null) ? 0 : algBytes.length;
+        int nonceLen = (nonce == null) ? 0 : nonce.length;
+        int dhLen = (dhKey == null) ? 0 : dhKey.length;
+        int encodedLen = 6 + algLen + nonceLen + dhLen;
+        byte[] encodedBytes = new byte[encodedLen];
+        int pos = 0;
+        System.arraycopy(Utils.int16ToBytes(algLen), 0, encodedBytes, pos, 2);
+        pos += 2;
+        if (algBytes != null) {
+            System.arraycopy(algBytes, 0, encodedBytes, pos, algLen);
+            pos += algLen;
+        }
+        System.arraycopy(Utils.int16ToBytes(nonceLen), 0, encodedBytes, pos, 2);
+        pos += 2;
+        if (nonce != null) {
+            System.arraycopy(nonce, 0, encodedBytes, pos, nonceLen);
+            pos += nonceLen;
+        }
+        System.arraycopy(Utils.int16ToBytes(dhLen), 0, encodedBytes, pos, 2);
+        pos += 2;
+        if (dhKey != null) {
+            System.arraycopy(dhKey, 0, encodedBytes, pos, dhLen);
+        }
+        return encodedBytes;
+    }
+
+    /**
+     * Decodes: [2B algLen][alg][2B nonceLen][nonce][2B dhLen][dhKey]
+     * and stores the received values in: remAlg, remNonce, remDHPubBytes
+     */
+    private void decodeInitData(byte[] encodedBytes) throws Exception
+    {
+        int pos = 0;
+        if (encodedBytes == null || encodedBytes.length < 6) {
+            throw new IllegalArgumentException("Invalid init data");
+        }
+        int len = Utils.bytesToInt16(new byte[] { encodedBytes[pos], encodedBytes[pos + 1] });
+        pos += 2;
+        if (len <= 0 || pos + len > encodedBytes.length) {
+            throw new IllegalArgumentException("Invalid alg length");
+        }
+        byte[] algBytes = new byte[len];
+        System.arraycopy(encodedBytes, pos, algBytes, 0, len);
+        remAlg = new String(algBytes);
+        pos += len;
+        len = Utils.bytesToInt16(new byte[] { encodedBytes[pos], encodedBytes[pos + 1] });
+        pos += 2;
+        if (len <= 0 || pos + len > encodedBytes.length) {
+            throw new IllegalArgumentException("Invalid nonce length");
+        }
+        remNonce = new byte[len];
+        System.arraycopy(encodedBytes, pos, remNonce, 0, len);
+        pos += len;
+        len = Utils.bytesToInt16(new byte[] { encodedBytes[pos], encodedBytes[pos + 1] });
+        pos += 2;
+        if (len <= 0 || pos + len > encodedBytes.length) {
+            throw new IllegalArgumentException("Invalid DH key length");
+        }
+        remDHPubBytes = new byte[len];
+        System.arraycopy(encodedBytes, pos, remDHPubBytes, 0, len);
+        pos += len;
+        if (pos != encodedBytes.length) {
+            throw new IllegalArgumentException("Trailing bytes in init data");
+        }
+    }
 }
